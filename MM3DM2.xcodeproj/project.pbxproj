@@ -18,6 +18,10 @@
 		B210A4E92A42289B00EFC271 /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4E62A42289A00EFC271 /* MathLibrary.swift */; };
 		B210A4ED2A4228C700EFC271 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4EB2A4228C700EFC271 /* Movement.swift */; };
 		B210A4EE2A4228C700EFC271 /* inputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4EC2A4228C700EFC271 /* inputController.swift */; };
+		B210A4F52A422A1F00EFC271 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4F12A422A1F00EFC271 /* GameController.swift */; };
+		B210A4F62A422A1F00EFC271 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4F22A422A1F00EFC271 /* GameScene.swift */; };
+		B210A4F72A422A1F00EFC271 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4F32A422A1F00EFC271 /* Camera.swift */; };
+		B210A4F82A422A1F00EFC271 /* SceneLighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4F42A422A1F00EFC271 /* SceneLighting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,13 +32,17 @@
 		B210A4D62A4225DF00EFC271 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B210A4DD2A42272400EFC271 /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		B210A4DE2A42272500EFC271 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
-		B210A4E22A42286B00EFC271 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		B210A4E42A42289A00EFC271 /* DebugLights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLights.swift; sourceTree = "<group>"; };
 		B210A4E52A42289A00EFC271 /* DebugLights.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = DebugLights.metal; sourceTree = "<group>"; };
 		B210A4E62A42289A00EFC271 /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
 		B210A4EB2A4228C700EFC271 /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		B210A4EC2A4228C700EFC271 /* inputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inputController.swift; sourceTree = "<group>"; };
-		B210A4EF2A42295F00EFC271 /* stdbool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdbool.h; sourceTree = "<group>"; };
+		B210A4F12A422A1F00EFC271 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		B210A4F22A422A1F00EFC271 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B210A4F32A422A1F00EFC271 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		B210A4F42A422A1F00EFC271 /* SceneLighting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLighting.swift; sourceTree = "<group>"; };
+		B217BEFF2A43602F00CCF15F /* stdbool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdbool.h; sourceTree = "<group>"; };
+		B217BF002A43602F00CCF15F /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				B210A4EA2A4228C700EFC271 /* Input */,
+				B210A4F02A422A1F00EFC271 /* Game */,
 				B210A4E32A42289A00EFC271 /* Utility */,
 				B210A4E12A42284A00EFC271 /* Shaders */,
 				B210A4CF2A4225DE00EFC271 /* MM3DM2App.swift */,
@@ -91,8 +100,8 @@
 		B210A4E12A42284A00EFC271 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				B210A4EF2A42295F00EFC271 /* stdbool.h */,
-				B210A4E22A42286B00EFC271 /* Common.h */,
+				B217BF002A43602F00CCF15F /* Common.h */,
+				B217BEFF2A43602F00CCF15F /* stdbool.h */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -114,6 +123,17 @@
 				B210A4EC2A4228C700EFC271 /* inputController.swift */,
 			);
 			path = Input;
+			sourceTree = "<group>";
+		};
+		B210A4F02A422A1F00EFC271 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				B210A4F12A422A1F00EFC271 /* GameController.swift */,
+				B210A4F22A422A1F00EFC271 /* GameScene.swift */,
+				B210A4F32A422A1F00EFC271 /* Camera.swift */,
+				B210A4F42A422A1F00EFC271 /* SceneLighting.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,11 +207,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B210A4E02A42272500EFC271 /* Options.swift in Sources */,
+				B210A4F52A422A1F00EFC271 /* GameController.swift in Sources */,
 				B210A4E92A42289B00EFC271 /* MathLibrary.swift in Sources */,
 				B210A4DF2A42272500EFC271 /* MetalView.swift in Sources */,
 				B210A4D22A4225DE00EFC271 /* ContentView.swift in Sources */,
+				B210A4F62A422A1F00EFC271 /* GameScene.swift in Sources */,
 				B210A4ED2A4228C700EFC271 /* Movement.swift in Sources */,
 				B210A4D02A4225DE00EFC271 /* MM3DM2App.swift in Sources */,
+				B210A4F82A422A1F00EFC271 /* SceneLighting.swift in Sources */,
+				B210A4F72A422A1F00EFC271 /* Camera.swift in Sources */,
 				B210A4EE2A4228C700EFC271 /* inputController.swift in Sources */,
 				B210A4E82A42289B00EFC271 /* DebugLights.metal in Sources */,
 				B210A4E72A42289B00EFC271 /* DebugLights.swift in Sources */,
@@ -260,7 +284,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_OBJC_BRIDGING_HEADER = Shaders/Common.h;
+				SWIFT_OBJC_BRIDGING_HEADER = Common.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -317,7 +341,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = Shaders/Common.h;
+				SWIFT_OBJC_BRIDGING_HEADER = Common.h;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
