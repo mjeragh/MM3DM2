@@ -11,54 +11,9 @@ extension MTLVertexDescriptor {
   static var defaultLayout: MTLVertexDescriptor? {
     MTKMetalVertexDescriptorFromModelIO(.defaultLayout)
   }
-    static var defaultPrimitiveLayout : MTLVertexDescriptor? {
-        MTKMetalVertexDescriptorFromModelIO(.defaultPrimitiveLayout)
-    }
 }
 
 extension MDLVertexDescriptor {
-    
-    static var defaultPrimitiveLayout : MDLVertexDescriptor {
-        let vertexDescriptor = MDLVertexDescriptor()
-        var offset = 0
-        
-        vertexDescriptor.attributes[0] = MDLVertexAttribute(name: MDLVertexAttributePosition,
-            format: .float3,
-            offset:0,
-            bufferIndex: 0)
-        offset += MemoryLayout<float3>.stride
-        
-        vertexDescriptor.attributes[1] = MDLVertexAttribute(
-             name: MDLVertexAttributeNormal,
-             format: .float3,
-             offset: 12,
-             bufferIndex: 0)
-           offset += MemoryLayout<float3>.stride
-        vertexDescriptor.attributes[2] =
-          MDLVertexAttribute(name: MDLVertexAttributeTextureCoordinate,
-                             format: .float2,
-                             offset: 24,
-                             bufferIndex: 0)
-        //offset += MemoryLayout<float2>.stride
-        
-        vertexDescriptor.attributes[3] =
-          MDLVertexAttribute(name: MDLVertexAttributeTangent,
-                             format: .float3,
-                             offset: 0,
-                             bufferIndex: 1)
-        
-        
-        vertexDescriptor.attributes[4] =
-          MDLVertexAttribute(name: MDLVertexAttributeBitangent,
-                             format: .float3,
-                             offset: 0,
-                             bufferIndex: 2)
-        
-        vertexDescriptor.layouts[0] = MDLVertexBufferLayout(stride: 32)
-        vertexDescriptor.layouts[1] = MDLVertexBufferLayout(stride: 12)
-        vertexDescriptor.layouts[2] = MDLVertexBufferLayout(stride: 12)
-        return vertexDescriptor
-    }
     
     static var defaultLayout: MDLVertexDescriptor = {
       let vertexDescriptor = MDLVertexDescriptor()

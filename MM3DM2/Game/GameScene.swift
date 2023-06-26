@@ -44,7 +44,7 @@ struct GameScene {
     var lighting = SceneLighting()
     var uniforms = Uniforms()
     
-    var sun, moon, land : Primitive
+    var sun, moon, land : Model
     var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
     var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
     
@@ -65,7 +65,7 @@ struct GameScene {
   init() {
       answer = (totalBuffer?.contents().bindMemory(to: Int.self, capacity: 1))!
       uniformPointer = (uniformBuffer?.contents().bindMemory(to: Uniforms.self, capacity: 1))!
-      land = Primitive(shape: .plane, size: 800)
+      land = Model(name: "plane1000.usda")
       land.position = [0,0,0]
       land.materials.baseColor = [0.01,0.51,0.01]
       models.append(land)
@@ -75,8 +75,10 @@ struct GameScene {
           pegs[number].features.interactive = true
           models.append(pegs[number])
       }
-      moon = Primitive(shape: .sphere, size: 7)
-      sun = Primitive(shape: .sphere, size: 15)
+      moon = Model(name: "peg.usda")
+      moon.scale = 2.0
+      sun = Model(name: "peg.usda")
+      sun.scale = 5.0
       
       sun.position = [0,20,0]
       moon.position = [2,22,43]

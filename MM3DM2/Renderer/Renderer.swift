@@ -37,10 +37,7 @@ class Renderer: NSObject {
     var params = Params()
     
     var forwardRenderPass: ForwardRenderPass
-    var gBufferRenderPass: GBufferRenderPass
-    var lightingRenderPass: LightingRenderPass
     var shadowRenderPass : ShadowRenderPass
-    var tiledDeferredRenderPass: TiledDeferredRenderPass?
     
     var shadowCamera = OrthographicCamera()
     
@@ -62,17 +59,8 @@ class Renderer: NSObject {
         
         self.options = options
         forwardRenderPass = ForwardRenderPass(view: metalView)
-        gBufferRenderPass = GBufferRenderPass(view: metalView)
-        lightingRenderPass = LightingRenderPass(view: metalView)
         shadowRenderPass = ShadowRenderPass(view: metalView)
-        options.tiledSupported = device.supportsFamily(.apple3)
-        if options.tiledSupported {
-          tiledDeferredRenderPass = TiledDeferredRenderPass(view: metalView)
-        } else {
-          print("WARNING: TBDR features not supported. Reverting to Forward Rendering")
-          tiledDeferredRenderPass = nil
-          options.renderChoice = .forward
-        }
+      
         super.init()
         
 
@@ -117,9 +105,6 @@ extension Renderer {
      //   scene?.sceneSizeWillChange(to: view.bounds.size)//, textureSize: size)
         forwardRenderPass.resize(view: view, size: size)
         shadowRenderPass.resize(view: view, size: size)
-        gBufferRenderPass.resize(view: view, size: size)
-        lightingRenderPass.resize(view: view, size: size)
-        tiledDeferredRenderPass?.resize(view: view, size: size)
         }
         
     
@@ -154,41 +139,14 @@ extension Renderer {
         
         shadowRenderPass.draw(commandBuffer: commandBuffer, scene: scene, uniforms: uniforms, params: params)
         
-        switch options.renderChoice {
-        case .deferred:
-            gBufferRenderPass.shadowTexture = shadowRenderPass.shadowTexture
-            gBufferRenderPass.draw(
-              commandBuffer: commandBuffer,
-              scene: scene,
-              uniforms: uniforms,
-              params: params)
-            lightingRenderPass.albedoTexture = gBufferRenderPass.albedoTexture
-            lightingRenderPass.normalTexture = gBufferRenderPass.normalTexture
-            lightingRenderPass.positionTexture = gBufferRenderPass.positionTexture
-            lightingRenderPass.stencilTexture = gBufferRenderPass.depthTexture
-            lightingRenderPass.descriptor = descriptor
-            lightingRenderPass.draw(
-              commandBuffer: commandBuffer,
-              scene: scene,
-              uniforms: uniforms,
-              params: params)
-        case .forward:
-            forwardRenderPass.descriptor = descriptor
+       forwardRenderPass.descriptor = descriptor
             forwardRenderPass.shadowTexture = shadowRenderPass.shadowTexture
             forwardRenderPass.draw(
               commandBuffer: commandBuffer,
               scene: scene,
               uniforms: uniforms,
               params: params)
-        case .tiledDeferred:
-            tiledDeferredRenderPass?.shadowTexture = shadowRenderPass.shadowTexture
-            tiledDeferredRenderPass?.descriptor = descriptor
-            tiledDeferredRenderPass?.draw(
-              commandBuffer: commandBuffer,
-              scene: scene,
-              uniforms: uniforms,
-              params: params)
-        }
+       
         
 
         

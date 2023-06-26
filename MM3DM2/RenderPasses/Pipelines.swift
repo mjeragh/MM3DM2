@@ -33,86 +33,23 @@ enum PipelineStates {
     }
     
     
-    static func createGBufferPSO(colorPixelFormat: MTLPixelFormat, functionConstants: MTLFunctionConstantValues,
-                                 tiled: Bool = false) -> MTLRenderPipelineState {
-        let vertexFunction = try! Renderer.library?.makeFunction(name: "vertex_main", constantValues: functionConstants)
-        let fragmentFunction = try! Renderer.library?.makeFunction(name: "fragment_gBuffer", constantValues: functionConstants)
-      let pipelineDescriptor = MTLRenderPipelineDescriptor()
-      pipelineDescriptor.vertexFunction = vertexFunction
-      pipelineDescriptor.fragmentFunction = fragmentFunction
-      pipelineDescriptor.colorAttachments[0].pixelFormat = .invalid
-        if tiled {
-            pipelineDescriptor.colorAttachments[0].pixelFormat = colorPixelFormat
-        }
-        pipelineDescriptor.setColorAttachmentPixelFormats()
-      pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float_stencil8
-            pipelineDescriptor.stencilAttachmentPixelFormat = .depth32Float_stencil8
-        
-      pipelineDescriptor.vertexDescriptor = .defaultPrimitiveLayout
-      return createPSO(descriptor: pipelineDescriptor)
-    }
+    
     
     
     static func createForwardPSO(colorPixelFormat: MTLPixelFormat, functionConstants: MTLFunctionConstantValues) -> MTLRenderPipelineState {
       let vertexFunction = try! Renderer.library?.makeFunction(name: "vertex_main", constantValues: functionConstants)
-      let fragmentFunction = try! Renderer.library?.makeFunction(name: "fragment_main", constantValues: functionConstants)
+      let fragmentFunction = try! Renderer.library?.makeFunction(name: "fragment_normals", constantValues: functionConstants)
       let pipelineDescriptor = MTLRenderPipelineDescriptor()
       pipelineDescriptor.vertexFunction = vertexFunction
       pipelineDescriptor.fragmentFunction = fragmentFunction
         pipelineDescriptor.colorAttachments[0].pixelFormat = colorPixelFormat//Renderer.colorPixelFormat
       pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
-      pipelineDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultPrimitiveLayout
+      pipelineDescriptor.vertexDescriptor = MTLVertexDescriptor.defaultLayout
     
       return createPSO(descriptor: pipelineDescriptor)
     }
     
-    static func createSunLightPSO(colorPixelFormat: MTLPixelFormat,
-                                  tiled: Bool = false) -> MTLRenderPipelineState {
-          let vertexFunction = Renderer.library?.makeFunction(name: "vertex_quad")
-        let fragment = tiled ? "fragment_tiled_deferredSun" : "fragment_deferredSun"
-        let fragmentFunction = Renderer.library?.makeFunction(name: fragment)
-          let pipelineDescriptor = MTLRenderPipelineDescriptor()
-          pipelineDescriptor.vertexFunction = vertexFunction
-          pipelineDescriptor.fragmentFunction = fragmentFunction
-            pipelineDescriptor.colorAttachments[0].pixelFormat = colorPixelFormat//Renderer.colorPixelFormat
-        if tiled {
-            pipelineDescriptor.setColorAttachmentPixelFormats()
-        }
-            pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float_stencil8
-            pipelineDescriptor.stencilAttachmentPixelFormat = .depth32Float_stencil8
-        
-        return createPSO(descriptor: pipelineDescriptor)
-        }
     
-    static func createPointLightPSO(colorPixelFormat: MTLPixelFormat,
-                                    tiled: Bool = false) -> MTLRenderPipelineState {
-      let vertexFunction = Renderer.library?.makeFunction(name: "vertex_pointLight")
-        let fragment = tiled ? "fragment_tiled_pointLight" : "fragment_pointLight"
-        let fragmentFunction = Renderer.library?.makeFunction(name: fragment)
-      let pipelineDescriptor = MTLRenderPipelineDescriptor()
-      pipelineDescriptor.vertexFunction = vertexFunction
-      pipelineDescriptor.fragmentFunction = fragmentFunction
-      pipelineDescriptor.colorAttachments[0].pixelFormat = colorPixelFormat
-        if tiled {
-                    pipelineDescriptor.setColorAttachmentPixelFormats()
-                }
-        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float_stencil8
-        pipelineDescriptor.stencilAttachmentPixelFormat = .depth32Float_stencil8
-    
-      pipelineDescriptor.vertexDescriptor =
-        MTLVertexDescriptor.defaultPrimitiveLayout
-      let attachment = pipelineDescriptor.colorAttachments[0]
-      attachment?.isBlendingEnabled = true
-      attachment?.rgbBlendOperation = .add
-      attachment?.alphaBlendOperation = .add
-      attachment?.sourceRGBBlendFactor = .one
-      attachment?.sourceAlphaBlendFactor = .one
-      attachment?.destinationRGBBlendFactor = .one
-      attachment?.destinationAlphaBlendFactor = .zero
-      attachment?.sourceRGBBlendFactor = .one
-      attachment?.sourceAlphaBlendFactor = .one
-      return createPSO(descriptor: pipelineDescriptor)
-    }
     
     static func createReflectivePSO(colorPixelFormat: MTLPixelFormat, functionConstants: MTLFunctionConstantValues) -> MTLRenderPipelineState {
       let vertexFunction = try! Renderer.library?.makeFunction(name: "vertex_water", constantValues: functionConstants)
@@ -122,7 +59,7 @@ enum PipelineStates {
       pipelineDescriptor.fragmentFunction = fragmentFunction
         pipelineDescriptor.colorAttachments[0].pixelFormat = colorPixelFormat//Renderer.colorPixelFormat
       pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
-        pipelineDescriptor.vertexDescriptor = .defaultPrimitiveLayout
+        pipelineDescriptor.vertexDescriptor = .defaultLayout
       return createPSO(descriptor: pipelineDescriptor)
     }
     
@@ -132,7 +69,7 @@ enum PipelineStates {
         pipelineDescriptor.vertexFunction = vertexFunction
         pipelineDescriptor.colorAttachments[0].pixelFormat = .invalid
         pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
-        pipelineDescriptor.vertexDescriptor = .defaultPrimitiveLayout
+        pipelineDescriptor.vertexDescriptor = .defaultLayout
         return createPSO(descriptor: pipelineDescriptor)
     }
    
