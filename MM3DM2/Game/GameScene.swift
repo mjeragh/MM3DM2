@@ -45,7 +45,7 @@ struct GameScene {
     var uniforms = Uniforms()
     
     var sun, moon, land : Model
-    var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
+    var pegs : [Model] = Array(repeating:Model(name: "pegShader.usda"), count: 8)
     var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
     
     //GPU Definition
@@ -75,7 +75,7 @@ struct GameScene {
           pegs[number].features.interactive = true
           models.append(pegs[number])
       }
-      moon = Model(name: "peg.usda")
+      moon = Model(name: "pegShader.usda")
       moon.scale = 2.0
       sun = Model(name: "beachball.usda")
       sun.scale = 5.0
