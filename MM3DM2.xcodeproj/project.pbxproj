@@ -32,6 +32,7 @@
 		B226DBA42A4A04F000E74501 /* BallAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226DBA12A4A04F000E74501 /* BallAnimations.swift */; };
 		B226DBA52A4A04F000E74501 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226DBA22A4A04F000E74501 /* Animation.swift */; };
 		B226DBA62A4A04F000E74501 /* TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226DBA32A4A04F000E74501 /* TransformComponent.swift */; };
+		B226DBA82A4AB84D00E74501 /* beachball.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBA72A4AB84D00E74501 /* beachball.usda */; };
 		B25F7B102A44A4FB002663BE /* SS.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0D2A44A4FB002663BE /* SS.usdz */; };
 		B25F7B112A44A4FB002663BE /* pegz.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0E2A44A4FB002663BE /* pegz.usdz */; };
 		B25F7B122A44A4FB002663BE /* peg.usda in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0F2A44A4FB002663BE /* peg.usda */; };
@@ -82,6 +83,7 @@
 		B226DBA12A4A04F000E74501 /* BallAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallAnimations.swift; sourceTree = "<group>"; };
 		B226DBA22A4A04F000E74501 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		B226DBA32A4A04F000E74501 /* TransformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformComponent.swift; sourceTree = "<group>"; };
+		B226DBA72A4AB84D00E74501 /* beachball.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = beachball.usda; sourceTree = "<group>"; };
 		B25F7B0D2A44A4FB002663BE /* SS.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = SS.usdz; sourceTree = "<group>"; };
 		B25F7B0E2A44A4FB002663BE /* pegz.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = pegz.usdz; sourceTree = "<group>"; };
 		B25F7B0F2A44A4FB002663BE /* peg.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = peg.usda; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		B25F7B0C2A44A4FB002663BE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B226DBA72A4AB84D00E74501 /* beachball.usda */,
 				B25F7B0D2A44A4FB002663BE /* SS.usdz */,
 				B25F7B0E2A44A4FB002663BE /* pegz.usdz */,
 				B226DB9E2A4A010500E74501 /* plane1000.usda */,
@@ -326,6 +329,7 @@
 				B25F7B122A44A4FB002663BE /* peg.usda in Resources */,
 				B226DB9F2A4A010500E74501 /* plane1000.usda in Resources */,
 				B226DB9B2A49FEBD00E74501 /* plane.usda in Resources */,
+				B226DBA82A4AB84D00E74501 /* beachball.usda in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

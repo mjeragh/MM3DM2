@@ -137,7 +137,7 @@ extension Renderer {
         
         updateUniforms(scene: scene)
         
-        shadowRenderPass.draw(commandBuffer: commandBuffer, scene: scene, uniforms: uniforms, params: params)
+//        shadowRenderPass.draw(commandBuffer: commandBuffer, scene: scene, uniforms: uniforms, params: params)
         
        forwardRenderPass.descriptor = descriptor
             forwardRenderPass.shadowTexture = shadowRenderPass.shadowTexture

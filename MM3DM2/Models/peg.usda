@@ -1,7 +1,7 @@
 #usda 1.0
 (
-    upAxis = "Y"
     defaultPrim = "Peg"
+    upAxis = "Y"
 )
 
 def Sphere "Peg"
