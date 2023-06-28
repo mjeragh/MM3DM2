@@ -32,7 +32,7 @@ def Xform "Root"
                 color3f inputs:diffuseColor = (1, 0, 0) (
                     colorSpace = "Input - Texture - Linear - sRGB"
                 )
-                color3f inputs:diffuseColor.connect = MaterialXPreviewSurface
+                color3f inputs:diffuseColor.connect = None
                 float inputs:roughness = 0.75
                 token outputs:surface
             }
