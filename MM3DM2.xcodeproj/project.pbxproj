@@ -36,6 +36,7 @@
 		B226DBAA2A4AF77B00E74501 /* SSa.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBA92A4AF77B00E74501 /* SSa.usda */; };
 		B226DBAC2A4AFA9C00E74501 /* pegShader.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBAB2A4AFA9C00E74501 /* pegShader.usda */; };
 		B226DBAE2A4C381C00E74501 /* HelloWorld.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBAD2A4C381C00E74501 /* HelloWorld.usda */; };
+		B226DBB42A4CB4C800E74501 /* Sphere.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBB32A4CB4C800E74501 /* Sphere.usda */; };
 		B25F7B102A44A4FB002663BE /* SS.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0D2A44A4FB002663BE /* SS.usdz */; };
 		B25F7B112A44A4FB002663BE /* pegz.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0E2A44A4FB002663BE /* pegz.usdz */; };
 		B25F7B122A44A4FB002663BE /* peg.usda in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0F2A44A4FB002663BE /* peg.usda */; };
@@ -90,6 +91,7 @@
 		B226DBA92A4AF77B00E74501 /* SSa.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SSa.usda; sourceTree = "<group>"; };
 		B226DBAB2A4AFA9C00E74501 /* pegShader.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pegShader.usda; sourceTree = "<group>"; };
 		B226DBAD2A4C381C00E74501 /* HelloWorld.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.usda; sourceTree = "<group>"; };
+		B226DBB32A4CB4C800E74501 /* Sphere.usda */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sphere.usda; sourceTree = SOURCE_ROOT; };
 		B25F7B0D2A44A4FB002663BE /* SS.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = SS.usdz; sourceTree = "<group>"; };
 		B25F7B0E2A44A4FB002663BE /* pegz.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = pegz.usdz; sourceTree = "<group>"; };
 		B25F7B0F2A44A4FB002663BE /* peg.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = peg.usda; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 		B25F7B0C2A44A4FB002663BE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B226DBB32A4CB4C800E74501 /* Sphere.usda */,
 				B226DBAD2A4C381C00E74501 /* HelloWorld.usda */,
 				B226DBAB2A4AFA9C00E74501 /* pegShader.usda */,
 				B226DBA72A4AB84D00E74501 /* beachball.usda */,
@@ -332,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B25F7B102A44A4FB002663BE /* SS.usdz in Resources */,
+				B226DBB42A4CB4C800E74501 /* Sphere.usda in Resources */,
 				B226DBAA2A4AF77B00E74501 /* SSa.usda in Resources */,
 				B210A4D72A4225DF00EFC271 /* Preview Assets.xcassets in Resources */,
 				B226DBAE2A4C381C00E74501 /* HelloWorld.usda in Resources */,
