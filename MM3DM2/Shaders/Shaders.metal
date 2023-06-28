@@ -117,7 +117,7 @@ constant bool hasInstances [[function_constant(6)]];
                                  lights,
                                  material);
     
-    color *= calculateShadow(in.shadowPosition, shadowTexture);
+  //  color *= calculateShadow(in.shadowPosition, shadowTexture);
     
     return float4(color,1);
 }

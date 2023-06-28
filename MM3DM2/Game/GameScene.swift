@@ -45,7 +45,7 @@ struct GameScene {
     var uniforms = Uniforms()
     
     var sun, moon, land : Model
-    var pegs : [Model] = Array(repeating:Model(name: "pegShader.usda"), count: 8)
+    var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
     var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
     
     //GPU Definition
@@ -73,11 +73,12 @@ struct GameScene {
           pegs[number] = Model(name: "peg.usda")
           pegs[number].position = [150,8,Float(120 + number * -35)]
           pegs[number].features.interactive = true
+          pegs[number].features.materials.baseColor = float3(1,0,0)
           models.append(pegs[number])
       }
-      moon = Model(name: "pegShader.usda")
+      moon = Model(name: "beachball.usda")
       moon.scale = 2.0
-      sun = Model(name: "beachball.usda")
+      sun = Model(name: "peg.usda")
       sun.scale = 5.0
       
       sun.position = [0,20,0]
@@ -107,6 +108,7 @@ struct GameScene {
       buildGPUBuffers()
       uniforms.viewMatrix = camera.viewMatrix.inverse
       uniforms.projectionMatrix = camera.projectionMatrix.inverse
+      
     }
 
 

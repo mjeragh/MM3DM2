@@ -55,7 +55,7 @@ struct SceneLighting {
     
   let sunlight: Light = {
     var light = Self.buildDefaultLight()
-    light.position = [1, 6, 10]
+    light.position = [1, 60, -10]
     return light
   }()
 
