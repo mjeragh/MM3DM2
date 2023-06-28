@@ -13,7 +13,7 @@ def Xform "World" (
         color3f[] primvars:displayColor = [(0.8, 0.0, 0.0)] (
             interpolation = "uniform"
         )
-
+    def Scope "Materials"{
         def Material "PegMaterial"
         {
             def Shader "PBRShader"
@@ -29,6 +29,7 @@ def Xform "World" (
                 color3f inputs:emissiveColor = (0.0, 0.0, 0.0)
                 float inputs:ior = 1.5
             }
+        }
         }
     }
 }

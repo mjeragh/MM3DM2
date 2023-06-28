@@ -78,7 +78,7 @@ struct GameScene {
       }
       moon = Model(name: "beachball.usda")
       moon.scale = 2.0
-      sun = Model(name: "HelloWorld.usda")
+      sun = Model(name: "SS.usdz")
       sun.scale = 5.0
       
       sun.position = [0,20,0]

@@ -116,8 +116,8 @@ struct ForwardRenderPass: RenderPass {
             
             functionConstants.setConstantValue(&property, type: .bool, index: 3)
             functionConstants.setConstantValue(&property, type: .bool, index: 4)
-            functionConstants.setConstantValue(&property, type: .bool, index: 5)
-            functionConstants.setConstantValue(&property, type: .bool, index: 6)
+            functionConstants.setConstantValue(&property, type: .bool, index: 25)
+            functionConstants.setConstantValue(&property, type: .bool, index: 26)
             return functionConstants
     }
 }

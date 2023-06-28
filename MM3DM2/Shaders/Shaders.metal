@@ -13,11 +13,28 @@
 #import "Vertex.h"
 
 using namespace metal;
-
+/*
+ BaseColor = 0,
+ NormalTexture = 1,
+ RoughnessTexture = 2,
+ MetallicTexture = 3,
+ AOTexture = 4,
+ OpacityTexture = 5,
+ ShadowTexture = 10,
+ SkyboxTexture = 11,
+ SkyboxDiffuseTexture = 12,
+ BRDFLutTexture = 13,
+ PositionTexture = 14,
+ MiscTexture = 31
+ */
 constant bool hasColorTexture [[function_constant(0)]];
 constant bool hasNormalTexture [[function_constant(1)]];
-constant bool hasSkeleton [[function_constant(5)]];
-constant bool hasInstances [[function_constant(6)]];
+constant bool hasRoughnessTexture [[function_constant(2)]];
+constant bool hasMetallicTexture [[function_constant(3)]];
+constant bool hasAOTexture [[function_constant(4)]];
+constant bool hasSkeleton [[function_constant(25)]];
+constant bool hasInstances [[function_constant(26)]];
+
 
 
 
