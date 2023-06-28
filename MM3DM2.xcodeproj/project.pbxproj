@@ -92,6 +92,7 @@
 		B226DBAB2A4AFA9C00E74501 /* pegShader.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pegShader.usda; sourceTree = "<group>"; };
 		B226DBAD2A4C381C00E74501 /* HelloWorld.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.usda; sourceTree = "<group>"; };
 		B226DBB32A4CB4C800E74501 /* Sphere.usda */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sphere.usda; sourceTree = SOURCE_ROOT; };
+		B226DBB52A4CB8D600E74501 /* train.usd */ = {isa = PBXFileReference; lastKnownFileType = file; path = train.usd; sourceTree = "<group>"; };
 		B25F7B0D2A44A4FB002663BE /* SS.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = SS.usdz; sourceTree = "<group>"; };
 		B25F7B0E2A44A4FB002663BE /* pegz.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = pegz.usdz; sourceTree = "<group>"; };
 		B25F7B0F2A44A4FB002663BE /* peg.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = peg.usda; sourceTree = "<group>"; };
@@ -227,6 +228,7 @@
 		B25F7B0C2A44A4FB002663BE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B226DBB52A4CB8D600E74501 /* train.usd */,
 				B226DBB32A4CB4C800E74501 /* Sphere.usda */,
 				B226DBAD2A4C381C00E74501 /* HelloWorld.usda */,
 				B226DBAB2A4AFA9C00E74501 /* pegShader.usda */,
