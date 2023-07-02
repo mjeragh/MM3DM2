@@ -37,6 +37,7 @@
 		B226DBAC2A4AFA9C00E74501 /* pegShader.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBAB2A4AFA9C00E74501 /* pegShader.usda */; };
 		B226DBAE2A4C381C00E74501 /* HelloWorld.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBAD2A4C381C00E74501 /* HelloWorld.usda */; };
 		B226DBB42A4CB4C800E74501 /* Sphere.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBB32A4CB4C800E74501 /* Sphere.usda */; };
+		B226DBB62A4CB9BC00E74501 /* train.usd in Resources */ = {isa = PBXBuildFile; fileRef = B226DBB52A4CB8D600E74501 /* train.usd */; };
 		B25F7B102A44A4FB002663BE /* SS.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0D2A44A4FB002663BE /* SS.usdz */; };
 		B25F7B112A44A4FB002663BE /* pegz.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0E2A44A4FB002663BE /* pegz.usdz */; };
 		B25F7B122A44A4FB002663BE /* peg.usda in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0F2A44A4FB002663BE /* peg.usda */; };
@@ -336,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B226DBB62A4CB9BC00E74501 /* train.usd in Resources */,
 				B25F7B102A44A4FB002663BE /* SS.usdz in Resources */,
 				B226DBB42A4CB4C800E74501 /* Sphere.usda in Resources */,
 				B226DBAA2A4AF77B00E74501 /* SSa.usda in Resources */,

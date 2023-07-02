@@ -45,7 +45,7 @@ struct GameScene {
     var uniforms = Uniforms()
     
     var sun, moon, land : Model
-    var pegs : [Model] = Array(repeating:Model(name: "Sphere.usda"), count: 8)
+    var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
     var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
     
     //GPU Definition
@@ -67,10 +67,10 @@ struct GameScene {
       uniformPointer = (uniformBuffer?.contents().bindMemory(to: Uniforms.self, capacity: 1))!
       land = Model(name: "plane1000.usda")
       land.position = [0,0,0]
-      land.materials.baseColor = [0.01,0.51,0.01]
+      //land.materials.baseColor = [0.01,0.51,0.01]
       models.append(land)
       for number in 0..<8 {
-          pegs[number] = Model(name: "Sphere.usda")
+          pegs[number] = Model(name: "peg.usda")
           pegs[number].position = [150,8,Float(120 + number * -35)]
           pegs[number].features.interactive = true
           models.append(pegs[number])

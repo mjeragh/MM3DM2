@@ -116,5 +116,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "229E0E95-D5B9-45EA-B19E-310F84388FBE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MM3DM2/Geometry/Submesh.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "init(material:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F644F0C1-015B-4E2D-B0BE-B9B435387DA1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MM3DM2/Geometry/Submesh.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "property(with:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "F644F0C1-015B-4E2D-B0BE-B9B435387DA1 - ccda11f73c13f904"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property(with: __C.MDLMaterialSemantic) -&gt; Swift.Optional&lt;__C.MTLTexture&gt;"
+                  moduleName = "MM3DM2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohammadjeragh/Dropbox/Source/Xcode/XCodeProjects/MM3DM2/MM3DM2/Geometry/Submesh.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "F644F0C1-015B-4E2D-B0BE-B9B435387DA1 - ccda11f73c13f904"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property(with: __C.MDLMaterialSemantic) -&gt; Swift.Optional&lt;__C.MTLTexture&gt;"
+                  moduleName = "MM3DM2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohammadjeragh/Dropbox/Source/Xcode/XCodeProjects/MM3DM2/MM3DM2/Geometry/Submesh.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5AE2345-F36C-406A-9DBC-C63DCC3A3166"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MM3DM2/Geometry/Submesh.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "init(mdlSubmesh:mtkSubmesh:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

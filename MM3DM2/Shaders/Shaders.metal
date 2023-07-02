@@ -41,10 +41,10 @@ constant bool hasInstances [[function_constant(26)]];
 
 
 [[vertex]] VertexOut vertex_main(const VertexIn vertexIn [[stage_in]],
-                                 constant float4x4 *jointMatrices [[buffer(22), function_constant(hasSkeleton)]],
+                                 constant float4x4 *jointMatrices [[buffer(22),function_constant(hasSkeleton)]],
                                  constant Instances *instances [[buffer(20), function_constant(hasInstances)]],
                                  uint instanceID [[instance_id, function_constant(hasInstances)]],
-                             constant Uniforms &uniforms [[buffer(UniformsBuffer)]])
+                                 constant Uniforms &uniforms [[buffer(UniformsBuffer)]])
 {
     float4 position = vertexIn.position;
     float4 normal = float4(vertexIn.normal,0);
@@ -96,6 +96,7 @@ constant bool hasInstances [[function_constant(26)]];
         out.worldTangent = uniforms.normalMatrix * tangent.xyz;
         out.worldBitangent = uniforms.normalMatrix * bitangent.xyz;
         out.uv = vertexIn.uv;
+        out.color = vertexIn.color;
         out.shadowPosition = uniforms.shadowProjectionMatrix * uniforms.shadowViewMatrix * uniforms.modelMatrix * vertexIn.position;
         //    .clip_distance[0] = dot(uniforms.modelMatrix * vertexIn.position, uniforms.clipPlane)
     }
@@ -136,7 +137,7 @@ constant bool hasInstances [[function_constant(26)]];
     
   //  color *= calculateShadow(in.shadowPosition, shadowTexture);
     
-    return float4(color,1);
+    return float4(in.color,1);
 }
 
 
