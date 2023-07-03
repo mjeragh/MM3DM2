@@ -3,14 +3,10 @@
     upAxis = "Y"
 )
 
-def Xform "World" (
-    kind = "group"
-)
-{
-    def Sphere "Peg"
+def Sphere "Peg"
     {
         double radius = 5
-        rel material:binding = </World/Materials/blue>
+        rel material:binding = </Materials/blue>
     }
     def Scope "Materials"
     {
@@ -32,4 +28,4 @@ def Xform "World" (
             }
         }
     }
-}
+
