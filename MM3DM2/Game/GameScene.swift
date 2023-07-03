@@ -70,7 +70,7 @@ struct GameScene {
       //land.materials.baseColor = [0.01,0.51,0.01]
       models.append(land)
       for number in 0..<8 {
-          pegs[number] = Model(name: "peg.usda")
+          pegs[number] = Model(name: "pegShader.usda")
           pegs[number].position = [150,8,Float(120 + number * -35)]
           pegs[number].features.interactive = true
           models.append(pegs[number])
