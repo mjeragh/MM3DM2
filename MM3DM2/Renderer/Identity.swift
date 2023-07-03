@@ -32,7 +32,7 @@ extension Identity{
 struct Features {
     var reflection = false
     var interactive = false
-    var materials = Material()
+    //var materials = Material()
     //var boundingBox : MDLAxisAlignedBoundingBox
     var nodeGPU : NodeGPU
 }
@@ -50,10 +50,10 @@ extension Properties {
         get {features.interactive}
         set {features.interactive = newValue}
     }
-    var materials : Material {
-        get {features.materials}
-        set {features.materials = newValue}
-    }
+//    var materials : Material {
+//        get {features.materials}
+//        set {features.materials = newValue}
+//    }
 //    var boundingBox : MDLAxisAlignedBoundingBox {
 //        get {features.boundingBox}
 //        set {features.boundingBox = newValue}

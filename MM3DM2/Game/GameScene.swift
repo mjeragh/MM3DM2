@@ -76,7 +76,7 @@ struct GameScene {
           models.append(pegs[number])
       }
       moon = Model(name: "beachball.usda")
-      moon.scale = 2.0
+      moon.scale = 12.0
       sun = Model(name: "train.usd")
       sun.scale = 5.0
       
@@ -89,11 +89,11 @@ struct GameScene {
       sun.name = "Sun"
       moon.name = "Moon"
       land.name = "land"
-      sun.materials.baseColor = [1,0,0]
-      sun.materials.secondColor = [1,0,1]
-      sun.materials.shininess = 32;
-      sun.materials.specularColor = [1,0,0]
-      moon.materials.baseColor = [0,0,1]
+//      sun.materials.baseColor = [1,0,0]
+//      sun.materials.secondColor = [1,0,1]
+//      sun.materials.shininess = 32;
+//      sun.materials.specularColor = [1,0,0]
+//      moon.materials.baseColor = [0,0,1]
       
       //camera.far = 1000
       camera.position = [0,0,-320]
