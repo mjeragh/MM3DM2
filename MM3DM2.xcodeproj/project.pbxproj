@@ -38,6 +38,7 @@
 		B226DBAE2A4C381C00E74501 /* HelloWorld.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBAD2A4C381C00E74501 /* HelloWorld.usda */; };
 		B226DBB42A4CB4C800E74501 /* Sphere.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBB32A4CB4C800E74501 /* Sphere.usda */; };
 		B226DBB62A4CB9BC00E74501 /* train.usd in Resources */ = {isa = PBXBuildFile; fileRef = B226DBB52A4CB8D600E74501 /* train.usd */; };
+		B226DBB82A534DB000E74501 /* tarina.usda in Resources */ = {isa = PBXBuildFile; fileRef = B226DBB72A534DB000E74501 /* tarina.usda */; };
 		B25F7B102A44A4FB002663BE /* SS.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0D2A44A4FB002663BE /* SS.usdz */; };
 		B25F7B112A44A4FB002663BE /* pegz.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0E2A44A4FB002663BE /* pegz.usdz */; };
 		B25F7B122A44A4FB002663BE /* peg.usda in Resources */ = {isa = PBXBuildFile; fileRef = B25F7B0F2A44A4FB002663BE /* peg.usda */; };
@@ -94,6 +95,7 @@
 		B226DBAD2A4C381C00E74501 /* HelloWorld.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.usda; sourceTree = "<group>"; };
 		B226DBB32A4CB4C800E74501 /* Sphere.usda */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sphere.usda; sourceTree = SOURCE_ROOT; };
 		B226DBB52A4CB8D600E74501 /* train.usd */ = {isa = PBXFileReference; lastKnownFileType = file; path = train.usd; sourceTree = "<group>"; };
+		B226DBB72A534DB000E74501 /* tarina.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tarina.usda; sourceTree = "<group>"; };
 		B25F7B0D2A44A4FB002663BE /* SS.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = SS.usdz; sourceTree = "<group>"; };
 		B25F7B0E2A44A4FB002663BE /* pegz.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = pegz.usdz; sourceTree = "<group>"; };
 		B25F7B0F2A44A4FB002663BE /* peg.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = peg.usda; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		B25F7B0C2A44A4FB002663BE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B226DBB72A534DB000E74501 /* tarina.usda */,
 				B226DBB52A4CB8D600E74501 /* train.usd */,
 				B226DBB32A4CB4C800E74501 /* Sphere.usda */,
 				B226DBAD2A4C381C00E74501 /* HelloWorld.usda */,
@@ -348,6 +351,7 @@
 				B25F7B122A44A4FB002663BE /* peg.usda in Resources */,
 				B226DB9F2A4A010500E74501 /* plane1000.usda in Resources */,
 				B226DB9B2A49FEBD00E74501 /* plane.usda in Resources */,
+				B226DBB82A534DB000E74501 /* tarina.usda in Resources */,
 				B226DBAC2A4AFA9C00E74501 /* pegShader.usda in Resources */,
 				B226DBA82A4AB84D00E74501 /* beachball.usda in Resources */,
 			);
