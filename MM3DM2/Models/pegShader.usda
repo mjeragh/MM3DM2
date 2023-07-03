@@ -4,28 +4,27 @@
 )
 
 def Sphere "Peg"
+{
+    double radius = 5
+    rel material:binding = </Materials/blue>
+}
+def Scope "Materials"
+{
+    def Material "blue"
     {
-        double radius = 5
-        rel material:binding = </Materials/blue>
-    }
-    def Scope "Materials"
-    {
-        def Material "blue"
-        {
-            token outputs:surface.connect = <Materials/blue/surfaceShader.outputs:surface>
+        token outputs:surface.connect = </Materials/blue/surfaceShader.outputs:surface>
 
-            def Shader "surfaceShader"
-            {
-                uniform token info:id = "UsdPreviewSurface"
-                color3f inputs:diffuseColor = (0.036551, 0.24143499, 0.8)
-                color3f inputs:emissiveColor = (0.036551, 0.24143499, 0.8)
-                float inputs:metallic = 0
-                normal3f inputs:normal = (1, 1, 1)
-                float inputs:occlusion = 1
-                float inputs:opacity = 1
-                float inputs:roughness = 0.9
-                token outputs:surface
-            }
+        def Shader "surfaceShader"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.036551, 0.24143499, 0.8)
+            color3f inputs:emissiveColor = (0.036551, 0.24143499, 0.8)
+            float inputs:metallic = 0
+            normal3f inputs:normal = (1, 1, 1)
+            float inputs:occlusion = 1
+            float inputs:opacity = 1
+            float inputs:roughness = 0.9
+            token outputs:surface
         }
     }
-
+}
