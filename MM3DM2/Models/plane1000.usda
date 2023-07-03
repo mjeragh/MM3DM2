@@ -11,7 +11,7 @@ def Mesh "Plane"
     point3f[] points = [(-500, 0, -500), (500, 0, -500), (500, 0, 500), (-500, 0, 500)]
     normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)]
     float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)]
-    rel material:binding = <Materials/green>  # Greenish color
+    rel material:binding = </Materials/green>  # Greenish color
 }
 def Scope "Materials"
     {
