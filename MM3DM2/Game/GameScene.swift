@@ -75,10 +75,10 @@ struct GameScene {
           pegs[number].features.interactive = true
           models.append(pegs[number])
       }
-      moon = Model(name: "beachball.usda")
-      moon.scale = 12.0
-      sun = Model(name: "train.usd")
-      sun.scale = 5.0
+      moon = Model(name: "pegShader.usda")
+      moon.scale = 1.5
+      sun = Model(name: "pegShader.usda")
+      sun.scale = 4.0
       
       sun.position = [0,20,0]
       moon.position = [2,22,43]

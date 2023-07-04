@@ -23,7 +23,7 @@ def Scope "Materials"
             normal3f inputs:normal = (1, 1, 1)
             float inputs:occlusion = 1
             float inputs:opacity = 1
-            float inputs:roughness = 0.9
+            float inputs:roughness = 0.1
             token outputs:surface
         }
     }
