@@ -32,7 +32,7 @@
 
 import Foundation
 
-struct Transform {
+struct TransformComponent : Component {
   var position: float3 = [0, 0, 0]
   var rotation: float3 = [0, 0, 0] {
     didSet {
@@ -44,7 +44,7 @@ struct Transform {
   var quaternion = simd_quatf()
 }
 
-extension Transform {
+extension TransformComponent {
   var modelMatrix: matrix_float4x4 {
     let translation = float4x4(translation: position)
     let rotation = float4x4(quaternion)
@@ -55,7 +55,7 @@ extension Transform {
 }
 
 protocol Transformable {
-  var transform: Transform { get set }
+  var transform: TransformComponent { get set }
 }
 
 extension Transformable {

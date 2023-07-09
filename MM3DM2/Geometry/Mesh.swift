@@ -38,7 +38,7 @@ import MetalKit
 struct Mesh {
   let vertexBuffers: [MTLBuffer]
   let submeshes: [Submesh]
-  var transform: TransformComponent?
+  var transform: AnimationTransformComponent?
 }
 
 extension Mesh {
@@ -61,7 +61,7 @@ extension Mesh {
   ) {
     self.init(mdlMesh: mdlMesh, mtkMesh: mtkMesh)
     if let mdlMeshTransform = mdlMesh.transform {
-      transform = TransformComponent(
+      transform = AnimationTransformComponent(
         transform: mdlMeshTransform,
         object: mdlMesh,
         startTime: startTime,

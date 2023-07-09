@@ -32,7 +32,7 @@
 
 import ModelIO
 
-struct TransformComponent {
+struct AnimationTransformComponent {
   let keyTransforms: [float4x4]
   let duration: Float
   var currentTransform: float4x4 = .identity

@@ -46,6 +46,9 @@
 		B25F7B1B2A44A997002663BE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F7B162A44A997002663BE /* Model.swift */; };
 		B25F7B1C2A44A997002663BE /* Submesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F7B172A44A997002663BE /* Submesh.swift */; };
 		B25F7B1D2A44A997002663BE /* VertexDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F7B182A44A997002663BE /* VertexDescriptor.swift */; };
+		B2C644D72A59855F00538373 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644D62A59855F00538373 /* Entity.swift */; };
+		B2C644D92A59DDEB00538373 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644D82A59DDEB00538373 /* Component.swift */; };
+		B2C644DB2A59E17900538373 /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644DA2A59E17900538373 /* ComponentType.swift */; };
 		B2FA482E2A49D28E00F1DA7B /* ShadowRenderPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48272A49D28E00F1DA7B /* ShadowRenderPass.swift */; };
 		B2FA482F2A49D28E00F1DA7B /* Pipelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48282A49D28E00F1DA7B /* Pipelines.swift */; };
 		B2FA48312A49D28E00F1DA7B /* RenderPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA482A2A49D28E00F1DA7B /* RenderPass.swift */; };
@@ -54,7 +57,7 @@
 		B2FA483C2A49F84200F1DA7B /* TextureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48362A49F84200F1DA7B /* TextureController.swift */; };
 		B2FA483D2A49F84200F1DA7B /* Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48372A49F84200F1DA7B /* Children.swift */; };
 		B2FA483E2A49F84200F1DA7B /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48382A49F84200F1DA7B /* Renderable.swift */; };
-		B2FA483F2A49F84200F1DA7B /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48392A49F84200F1DA7B /* Transform.swift */; };
+		B2FA483F2A49F84200F1DA7B /* TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48392A49F84200F1DA7B /* TransformComponent.swift */; };
 		B2FA48402A49F84200F1DA7B /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA483A2A49F84200F1DA7B /* Renderer.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,7 +96,7 @@
 		B226DBA92A4AF77B00E74501 /* SSa.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SSa.usda; sourceTree = "<group>"; };
 		B226DBAB2A4AFA9C00E74501 /* pegShader.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pegShader.usda; sourceTree = "<group>"; };
 		B226DBAD2A4C381C00E74501 /* HelloWorld.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.usda; sourceTree = "<group>"; };
-		B226DBB32A4CB4C800E74501 /* Sphere.usda */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sphere.usda; sourceTree = SOURCE_ROOT; };
+		B226DBB32A4CB4C800E74501 /* Sphere.usda */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sphere.usda; sourceTree = SOURCE_ROOT; };
 		B226DBB52A4CB8D600E74501 /* train.usd */ = {isa = PBXFileReference; lastKnownFileType = file; path = train.usd; sourceTree = "<group>"; };
 		B226DBB72A534DB000E74501 /* tarina.usda */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tarina.usda; sourceTree = "<group>"; };
 		B25F7B0D2A44A4FB002663BE /* SS.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = SS.usdz; sourceTree = "<group>"; };
@@ -103,6 +106,9 @@
 		B25F7B162A44A997002663BE /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B25F7B172A44A997002663BE /* Submesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Submesh.swift; sourceTree = "<group>"; };
 		B25F7B182A44A997002663BE /* VertexDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexDescriptor.swift; sourceTree = "<group>"; };
+		B2C644D62A59855F00538373 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		B2C644D82A59DDEB00538373 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		B2C644DA2A59E17900538373 /* ComponentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentType.swift; sourceTree = "<group>"; };
 		B2FA48272A49D28E00F1DA7B /* ShadowRenderPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowRenderPass.swift; sourceTree = "<group>"; };
 		B2FA48282A49D28E00F1DA7B /* Pipelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pipelines.swift; sourceTree = "<group>"; };
 		B2FA482A2A49D28E00F1DA7B /* RenderPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPass.swift; sourceTree = "<group>"; };
@@ -111,7 +117,7 @@
 		B2FA48362A49F84200F1DA7B /* TextureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureController.swift; sourceTree = "<group>"; };
 		B2FA48372A49F84200F1DA7B /* Children.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Children.swift; sourceTree = "<group>"; };
 		B2FA48382A49F84200F1DA7B /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
-		B2FA48392A49F84200F1DA7B /* Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
+		B2FA48392A49F84200F1DA7B /* TransformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformComponent.swift; sourceTree = "<group>"; };
 		B2FA483A2A49F84200F1DA7B /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +151,7 @@
 		B210A4CE2A4225DE00EFC271 /* MM3DM2 */ = {
 			isa = PBXGroup;
 			children = (
+				B2C644D52A59853500538373 /* ECS */,
 				B226DBA02A4A04F000E74501 /* Animation */,
 				B2FA48252A49D28E00F1DA7B /* RenderPasses */,
 				B210A4EA2A4228C700EFC271 /* Input */,
@@ -258,6 +265,17 @@
 			path = Geometry;
 			sourceTree = "<group>";
 		};
+		B2C644D52A59853500538373 /* ECS */ = {
+			isa = PBXGroup;
+			children = (
+				B2C644D62A59855F00538373 /* Entity.swift */,
+				B2C644D82A59DDEB00538373 /* Component.swift */,
+				B2C644DA2A59E17900538373 /* ComponentType.swift */,
+				B2FA48392A49F84200F1DA7B /* TransformComponent.swift */,
+			);
+			path = ECS;
+			sourceTree = "<group>";
+		};
 		B2FA48252A49D28E00F1DA7B /* RenderPasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +294,6 @@
 				B2FA48362A49F84200F1DA7B /* TextureController.swift */,
 				B2FA48372A49F84200F1DA7B /* Children.swift */,
 				B2FA48382A49F84200F1DA7B /* Renderable.swift */,
-				B2FA48392A49F84200F1DA7B /* Transform.swift */,
 				B2FA483A2A49F84200F1DA7B /* Renderer.swift */,
 			);
 			path = Renderer;
@@ -391,12 +408,15 @@
 				B210A4D02A4225DE00EFC271 /* MM3DM2App.swift in Sources */,
 				B2FA483C2A49F84200F1DA7B /* TextureController.swift in Sources */,
 				B217BF072A4365A600CCF15F /* Shaders.metal in Sources */,
-				B2FA483F2A49F84200F1DA7B /* Transform.swift in Sources */,
+				B2FA483F2A49F84200F1DA7B /* TransformComponent.swift in Sources */,
 				B210A4F82A422A1F00EFC271 /* SceneLighting.swift in Sources */,
 				B210A4F72A422A1F00EFC271 /* Camera.swift in Sources */,
 				B2FA482F2A49D28E00F1DA7B /* Pipelines.swift in Sources */,
 				B210A4EE2A4228C700EFC271 /* inputController.swift in Sources */,
+				B2C644D72A59855F00538373 /* Entity.swift in Sources */,
+				B2C644D92A59DDEB00538373 /* Component.swift in Sources */,
 				B210A4E82A42289B00EFC271 /* DebugLights.metal in Sources */,
+				B2C644DB2A59E17900538373 /* ComponentType.swift in Sources */,
 				B210A4E72A42289B00EFC271 /* DebugLights.swift in Sources */,
 				B226DB992A49F9F600E74501 /* PBR.metal in Sources */,
 			);
