@@ -31,10 +31,9 @@
 
 import MetalKit
 
-protocol Renderable : Transformable, Identity {
+struct RenderableComponent : Component {
 //    var reflective : Bool {get}
   //  var instancesCount : Int { get}
-    func update(deltaTime: Float)
-    func render(encoder: MTLRenderCommandEncoder, uniforms: Uniforms,
-              params fragment: Params)
+    var update: (Float) -> Void
+    var render :(MTLRenderCommandEncoder, Uniforms, Params) -> Void
 }

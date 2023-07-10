@@ -39,7 +39,7 @@ class Model: Renderable, Properties {
     
     var id: ID
     
-  var transform = Transform()
+  var transform = TransformComponent()
   var meshes: [Mesh]
   var tiling: UInt32 = 1
   var name: String

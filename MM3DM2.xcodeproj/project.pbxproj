@@ -49,6 +49,9 @@
 		B2C644D72A59855F00538373 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644D62A59855F00538373 /* Entity.swift */; };
 		B2C644D92A59DDEB00538373 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644D82A59DDEB00538373 /* Component.swift */; };
 		B2C644DB2A59E17900538373 /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644DA2A59E17900538373 /* ComponentType.swift */; };
+		B2C644DD2A5B36F400538373 /* ParentCompanent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644DC2A5B36F400538373 /* ParentCompanent.swift */; };
+		B2C644DF2A5B392400538373 /* RenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644DE2A5B392400538373 /* RenderComponent.swift */; };
+		B2C644E12A5C7F7A00538373 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644E02A5C7F7A00538373 /* System.swift */; };
 		B2FA482E2A49D28E00F1DA7B /* ShadowRenderPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48272A49D28E00F1DA7B /* ShadowRenderPass.swift */; };
 		B2FA482F2A49D28E00F1DA7B /* Pipelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48282A49D28E00F1DA7B /* Pipelines.swift */; };
 		B2FA48312A49D28E00F1DA7B /* RenderPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA482A2A49D28E00F1DA7B /* RenderPass.swift */; };
@@ -58,7 +61,7 @@
 		B2FA483D2A49F84200F1DA7B /* Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48372A49F84200F1DA7B /* Children.swift */; };
 		B2FA483E2A49F84200F1DA7B /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48382A49F84200F1DA7B /* Renderable.swift */; };
 		B2FA483F2A49F84200F1DA7B /* TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48392A49F84200F1DA7B /* TransformComponent.swift */; };
-		B2FA48402A49F84200F1DA7B /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA483A2A49F84200F1DA7B /* Renderer.swift */; };
+		B2FA48402A49F84200F1DA7B /* RendererSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA483A2A49F84200F1DA7B /* RendererSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +112,9 @@
 		B2C644D62A59855F00538373 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		B2C644D82A59DDEB00538373 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B2C644DA2A59E17900538373 /* ComponentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentType.swift; sourceTree = "<group>"; };
+		B2C644DC2A5B36F400538373 /* ParentCompanent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCompanent.swift; sourceTree = "<group>"; };
+		B2C644DE2A5B392400538373 /* RenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
+		B2C644E02A5C7F7A00538373 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		B2FA48272A49D28E00F1DA7B /* ShadowRenderPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowRenderPass.swift; sourceTree = "<group>"; };
 		B2FA48282A49D28E00F1DA7B /* Pipelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pipelines.swift; sourceTree = "<group>"; };
 		B2FA482A2A49D28E00F1DA7B /* RenderPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderPass.swift; sourceTree = "<group>"; };
@@ -118,7 +124,7 @@
 		B2FA48372A49F84200F1DA7B /* Children.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Children.swift; sourceTree = "<group>"; };
 		B2FA48382A49F84200F1DA7B /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		B2FA48392A49F84200F1DA7B /* TransformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformComponent.swift; sourceTree = "<group>"; };
-		B2FA483A2A49F84200F1DA7B /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		B2FA483A2A49F84200F1DA7B /* RendererSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererSystem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +278,11 @@
 				B2C644D82A59DDEB00538373 /* Component.swift */,
 				B2C644DA2A59E17900538373 /* ComponentType.swift */,
 				B2FA48392A49F84200F1DA7B /* TransformComponent.swift */,
+				B2C644DC2A5B36F400538373 /* ParentCompanent.swift */,
+				B2C644DE2A5B392400538373 /* RenderComponent.swift */,
+				B2FA48382A49F84200F1DA7B /* Renderable.swift */,
+				B2FA483A2A49F84200F1DA7B /* RendererSystem.swift */,
+				B2C644E02A5C7F7A00538373 /* System.swift */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
@@ -293,8 +304,6 @@
 				B2FA48352A49F84200F1DA7B /* Identity.swift */,
 				B2FA48362A49F84200F1DA7B /* TextureController.swift */,
 				B2FA48372A49F84200F1DA7B /* Children.swift */,
-				B2FA48382A49F84200F1DA7B /* Renderable.swift */,
-				B2FA483A2A49F84200F1DA7B /* Renderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -381,7 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2FA48402A49F84200F1DA7B /* Renderer.swift in Sources */,
+				B2FA48402A49F84200F1DA7B /* RendererSystem.swift in Sources */,
 				B210A4E02A42272500EFC271 /* Options.swift in Sources */,
 				B210A4F52A422A1F00EFC271 /* GameController.swift in Sources */,
 				B2FA483E2A49F84200F1DA7B /* Renderable.swift in Sources */,
@@ -392,6 +401,7 @@
 				B210A4E92A42289B00EFC271 /* MathLibrary.swift in Sources */,
 				B226DB982A49F9F600E74501 /* Lighting.metal in Sources */,
 				B210A4DF2A42272500EFC271 /* MetalView.swift in Sources */,
+				B2C644DF2A5B392400538373 /* RenderComponent.swift in Sources */,
 				B2FA483B2A49F84200F1DA7B /* Identity.swift in Sources */,
 				B226DBA62A4A04F000E74501 /* TransformComponent.swift in Sources */,
 				B226DB972A49F9F600E74501 /* Shadow.metal in Sources */,
@@ -399,7 +409,9 @@
 				B2FA483D2A49F84200F1DA7B /* Children.swift in Sources */,
 				B210A4D22A4225DE00EFC271 /* ContentView.swift in Sources */,
 				B210A4F62A422A1F00EFC271 /* GameScene.swift in Sources */,
+				B2C644E12A5C7F7A00538373 /* System.swift in Sources */,
 				B226DBA42A4A04F000E74501 /* BallAnimations.swift in Sources */,
+				B2C644DD2A5B36F400538373 /* ParentCompanent.swift in Sources */,
 				B25F7B1B2A44A997002663BE /* Model.swift in Sources */,
 				B25F7B1D2A44A997002663BE /* VertexDescriptor.swift in Sources */,
 				B226DBA52A4A04F000E74501 /* Animation.swift in Sources */,

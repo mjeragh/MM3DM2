@@ -22,7 +22,7 @@ enum RendererError: Error {
     case badVertexDescriptor
 }
 
-class Renderer: NSObject {
+class RendererSystem: System {
     
     static var device: MTLDevice!
     static var commandQueue: MTLCommandQueue!
