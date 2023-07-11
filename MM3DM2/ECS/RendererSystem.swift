@@ -47,21 +47,21 @@ class RendererSystem: System {
         let commandQueue = device.makeCommandQueue() else {
           fatalError("GPU not available")
       }
-        Renderer.device = device
-        Renderer.commandQueue = commandQueue
-        Renderer.library = device.makeDefaultLibrary()
-        Renderer.colorPixelFormat = metalView.colorPixelFormat
+        RendererSystem.device = device
+        RendererSystem.commandQueue = commandQueue
+        RendererSystem.library = device.makeDefaultLibrary()
+        RendererSystem.colorPixelFormat = metalView.colorPixelFormat
        
         metalView.device = device
         metalView.depthStencilPixelFormat = .depth32Float
       
-        depthStencilState = Renderer.buildDepthStencilState()!
+        depthStencilState = RendererSystem.buildDepthStencilState()!
         
         self.options = options
         forwardRenderPass = ForwardRenderPass(view: metalView)
         shadowRenderPass = ShadowRenderPass(view: metalView)
       
-        super.init()
+       // super.init()
         
 
         metalView.clearColor = MTLClearColor(
@@ -79,7 +79,7 @@ class RendererSystem: System {
       descriptor.depthCompareFunction = .lessEqual
       descriptor.isDepthWriteEnabled = true
       return
-         Renderer.device.makeDepthStencilState(descriptor: descriptor)
+         RendererSystem.device.makeDepthStencilState(descriptor: descriptor)
     }
     
     func initialize(_ scene: GameScene) {
@@ -99,7 +99,7 @@ class RendererSystem: System {
     
 }
     
-extension Renderer {
+extension RendererSystem {
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
      //   scene?.sceneSizeWillChange(to: view.bounds.size)//, textureSize: size)
@@ -129,7 +129,7 @@ extension Renderer {
     
     func draw(scene: GameScene, in view: MTKView) {
         guard
-            let commandBuffer = Renderer.commandQueue.makeCommandBuffer(),
+            let commandBuffer = RendererSystem.commandQueue.makeCommandBuffer(),
             let descriptor = view.currentRenderPassDescriptor
         else {
             return

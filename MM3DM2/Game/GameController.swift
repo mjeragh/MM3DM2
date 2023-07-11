@@ -34,7 +34,7 @@ import MetalKit
 
 class GameController: NSObject {
   var scene: GameScene
-  var renderer: Renderer!
+  var renderer: RendererSystem!
   var options = Options()
   static var fps: Double = 0
   var deltaTime: Double = 0
@@ -42,7 +42,7 @@ class GameController: NSObject {
 
   init(metalView: MTKView, options: Options) {
     Self.fps = Double(metalView.preferredFramesPerSecond)
-    renderer = Renderer(metalView: metalView, options: options)
+    renderer = RendererSystem(metalView: metalView, options: options)
     scene = GameScene()
     renderer.initialize(scene)
     super.init()

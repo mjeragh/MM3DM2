@@ -59,7 +59,7 @@
 		B2FA483B2A49F84200F1DA7B /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48352A49F84200F1DA7B /* Identity.swift */; };
 		B2FA483C2A49F84200F1DA7B /* TextureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48362A49F84200F1DA7B /* TextureController.swift */; };
 		B2FA483D2A49F84200F1DA7B /* Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48372A49F84200F1DA7B /* Children.swift */; };
-		B2FA483E2A49F84200F1DA7B /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48382A49F84200F1DA7B /* Renderable.swift */; };
+		B2FA483E2A49F84200F1DA7B /* RenderableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48382A49F84200F1DA7B /* RenderableComponent.swift */; };
 		B2FA483F2A49F84200F1DA7B /* TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48392A49F84200F1DA7B /* TransformComponent.swift */; };
 		B2FA48402A49F84200F1DA7B /* RendererSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA483A2A49F84200F1DA7B /* RendererSystem.swift */; };
 /* End PBXBuildFile section */
@@ -122,7 +122,7 @@
 		B2FA48352A49F84200F1DA7B /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		B2FA48362A49F84200F1DA7B /* TextureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureController.swift; sourceTree = "<group>"; };
 		B2FA48372A49F84200F1DA7B /* Children.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Children.swift; sourceTree = "<group>"; };
-		B2FA48382A49F84200F1DA7B /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		B2FA48382A49F84200F1DA7B /* RenderableComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderableComponent.swift; sourceTree = "<group>"; };
 		B2FA48392A49F84200F1DA7B /* TransformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformComponent.swift; sourceTree = "<group>"; };
 		B2FA483A2A49F84200F1DA7B /* RendererSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererSystem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,13 +276,13 @@
 			children = (
 				B2C644D62A59855F00538373 /* Entity.swift */,
 				B2C644D82A59DDEB00538373 /* Component.swift */,
+				B2C644E02A5C7F7A00538373 /* System.swift */,
 				B2C644DA2A59E17900538373 /* ComponentType.swift */,
 				B2FA48392A49F84200F1DA7B /* TransformComponent.swift */,
 				B2C644DC2A5B36F400538373 /* ParentCompanent.swift */,
 				B2C644DE2A5B392400538373 /* RenderComponent.swift */,
-				B2FA48382A49F84200F1DA7B /* Renderable.swift */,
+				B2FA48382A49F84200F1DA7B /* RenderableComponent.swift */,
 				B2FA483A2A49F84200F1DA7B /* RendererSystem.swift */,
-				B2C644E02A5C7F7A00538373 /* System.swift */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
@@ -393,7 +393,7 @@
 				B2FA48402A49F84200F1DA7B /* RendererSystem.swift in Sources */,
 				B210A4E02A42272500EFC271 /* Options.swift in Sources */,
 				B210A4F52A422A1F00EFC271 /* GameController.swift in Sources */,
-				B2FA483E2A49F84200F1DA7B /* Renderable.swift in Sources */,
+				B2FA483E2A49F84200F1DA7B /* RenderableComponent.swift in Sources */,
 				B25F7B192A44A997002663BE /* Mesh.swift in Sources */,
 				B2FA48312A49D28E00F1DA7B /* RenderPass.swift in Sources */,
 				B217BF062A4365A600CCF15F /* Ray.metal in Sources */,
