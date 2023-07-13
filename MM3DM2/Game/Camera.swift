@@ -40,7 +40,7 @@ protocol Camera: Transformable {
 }
 
 struct FPCamera: Camera {
-  var transform = Transform()
+  var transform = TransformComponent()
 
   var aspect: Float = 1.0
   var fov = Float(70).degreesToRadians
@@ -77,7 +77,7 @@ struct FPCamera: Camera {
 extension FPCamera: Movement { }
 
 struct ArcballCamera: Camera {
-    var transform = Transform()
+    var transform = TransformComponent()
     
     var aspect: Float = 1.0
     var fov = Float(70).degreesToRadians
@@ -139,7 +139,7 @@ struct ArcballCamera: Camera {
     }
     
 struct OrthographicCamera: Camera, Movement {
-  var transform = Transform()
+  var transform = TransformComponent()
   var aspect: CGFloat = 1
   var viewSize: CGFloat = 10
   var near: Float = 0.1

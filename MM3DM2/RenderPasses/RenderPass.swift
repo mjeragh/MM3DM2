@@ -49,7 +49,7 @@ extension RenderPass {
     let descriptor = MTLDepthStencilDescriptor()
     descriptor.depthCompareFunction = .less
     descriptor.isDepthWriteEnabled = true
-    return Renderer.device.makeDepthStencilState(
+    return RendererSystem.device.makeDepthStencilState(
       descriptor: descriptor)
   }
 
@@ -72,7 +72,7 @@ extension RenderPass {
     textureDesc.storageMode = storageMode
     textureDesc.usage = usage
     guard let texture =
-      Renderer.device.makeTexture(descriptor: textureDesc) else {
+      RendererSystem.device.makeTexture(descriptor: textureDesc) else {
         fatalError("Failed to create texture")
       }
     texture.label = label

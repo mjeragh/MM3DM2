@@ -13,7 +13,7 @@ enum PipelineStates {
       let pipelineState: MTLRenderPipelineState
       do {
         pipelineState =
-        try Renderer.device.makeRenderPipelineState(
+        try RendererSystem.device.makeRenderPipelineState(
           descriptor: descriptor)
       } catch let error {
         fatalError(error.localizedDescription)
@@ -25,7 +25,7 @@ enum PipelineStates {
         let pipelineState: MTLComputePipelineState
         do {
           pipelineState =
-          try Renderer.device.makeComputePipelineState(function: computeFunction)
+          try RendererSystem.device.makeComputePipelineState(function: computeFunction)
         } catch let error {
           fatalError(error.localizedDescription)
         }
@@ -37,8 +37,8 @@ enum PipelineStates {
     
     
     static func createForwardPSO(colorPixelFormat: MTLPixelFormat, functionConstants: MTLFunctionConstantValues) -> MTLRenderPipelineState {
-      let vertexFunction = try! Renderer.library?.makeFunction(name: "vertex_main", constantValues: functionConstants)
-      let fragmentFunction = try! Renderer.library?.makeFunction(name: "fragment_main", constantValues: functionConstants)
+      let vertexFunction = try! RendererSystem.library?.makeFunction(name: "vertex_main", constantValues: functionConstants)
+      let fragmentFunction = try! RendererSystem.library?.makeFunction(name: "fragment_main", constantValues: functionConstants)
       let pipelineDescriptor = MTLRenderPipelineDescriptor()
       pipelineDescriptor.vertexFunction = vertexFunction
       pipelineDescriptor.fragmentFunction = fragmentFunction
@@ -52,8 +52,8 @@ enum PipelineStates {
     
     
     static func createReflectivePSO(colorPixelFormat: MTLPixelFormat, functionConstants: MTLFunctionConstantValues) -> MTLRenderPipelineState {
-      let vertexFunction = try! Renderer.library?.makeFunction(name: "vertex_water", constantValues: functionConstants)
-      let fragmentFunction = try! Renderer.library?.makeFunction(name: "fragment_water", constantValues: functionConstants)
+      let vertexFunction = try! RendererSystem.library?.makeFunction(name: "vertex_water", constantValues: functionConstants)
+      let fragmentFunction = try! RendererSystem.library?.makeFunction(name: "fragment_water", constantValues: functionConstants)
       let pipelineDescriptor = MTLRenderPipelineDescriptor()
       pipelineDescriptor.vertexFunction = vertexFunction
       pipelineDescriptor.fragmentFunction = fragmentFunction
@@ -65,7 +65,7 @@ enum PipelineStates {
     
     static func createShadowPSO() -> MTLRenderPipelineState {
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        let vertexFunction = Renderer.library?.makeFunction(name: "vertex_depth")
+        let vertexFunction = RendererSystem.library?.makeFunction(name: "vertex_depth")
         pipelineDescriptor.vertexFunction = vertexFunction
         pipelineDescriptor.colorAttachments[0].pixelFormat = .invalid
         pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float

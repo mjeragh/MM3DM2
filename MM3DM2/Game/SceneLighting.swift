@@ -124,7 +124,7 @@ struct SceneLighting {
     
     static func createBuffer(lights: [Light]) -> MTLBuffer {
       var lights = lights
-      return Renderer.device.makeBuffer(
+      return RendererSystem.device.makeBuffer(
         bytes: &lights,
         length: MemoryLayout<Light>.stride * lights.count,
         options: [])!

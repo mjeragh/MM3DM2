@@ -49,7 +49,7 @@ enum TextureController {
 
   // load from string file name
   static func loadTexture(filename: String) throws -> MTLTexture? {
-    let textureLoader = MTKTextureLoader(device: Renderer.device)
+    let textureLoader = MTKTextureLoader(device: RendererSystem.device)
 
     if let texture = try? textureLoader.newTexture(
       name: filename,
@@ -84,7 +84,7 @@ enum TextureController {
 
   // load from USDZ file
   static func loadTexture(texture: MDLTexture) throws -> MTLTexture? {
-    let textureLoader = MTKTextureLoader(device: Renderer.device)
+    let textureLoader = MTKTextureLoader(device: RendererSystem.device)
     let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
       .origin: MTKTextureLoader.Origin.bottomLeft,
       .SRGB: false,
@@ -103,7 +103,7 @@ enum TextureController {
 
   // load a cube texture
   static func loadCubeTexture(imageName: String) throws -> MTLTexture {
-    let textureLoader = MTKTextureLoader(device: Renderer.device)
+    let textureLoader = MTKTextureLoader(device: RendererSystem.device)
     if let texture = MDLTexture(cubeWithImagesNamed: [imageName]) {
       let options: [MTKTextureLoader.Option: Any] = [
         .origin: MTKTextureLoader.Origin.topLeft,

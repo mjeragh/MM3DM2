@@ -59,7 +59,7 @@ class Model: Renderable, Properties {
       withExtension: nil) else {
       fatalError("Model: \(name) not found")
     }
-    let allocator = MTKMeshBufferAllocator(device: Renderer.device)
+    let allocator = MTKMeshBufferAllocator(device: RendererSystem.device)
     let meshDescriptor = MDLVertexDescriptor.defaultLayout
     let asset = MDLAsset(
       url: assetURL,
@@ -78,7 +78,7 @@ class Model: Renderable, Properties {
       mtkMeshes.append(
         try! MTKMesh(
           mesh: mdlMesh,
-          device: Renderer.device))
+          device: RendererSystem.device))
     }
     meshes = zip(mdlMeshes, mtkMeshes).map {
       Mesh(

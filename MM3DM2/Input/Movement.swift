@@ -17,7 +17,7 @@ protocol Movement where Self : Transformable {
 }
 
 extension Movement {
-    func updateInput(deltaTime: Float) -> Transform {
+    func updateInput(deltaTime: Float) -> TransformComponent {
         var transform = Transform()
         let rotationAmount = deltaTime * Settings.rotationSpeed
         let input = InputController.shared

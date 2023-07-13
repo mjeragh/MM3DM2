@@ -34,7 +34,7 @@ import MetalKit
 
 enum DebugLights {
   static let linePipelineState: MTLRenderPipelineState = {
-    let library = Renderer.library
+    let library = RendererSystem.library
     let vertexFunction = library?.makeFunction(name: "vertex_debug")
     let fragmentFunction = library?.makeFunction(name: "fragment_debug_line")
     let psoDescriptor = MTLRenderPipelineDescriptor()
@@ -44,7 +44,7 @@ enum DebugLights {
     psoDescriptor.depthAttachmentPixelFormat = .depth32Float
     let pipelineState: MTLRenderPipelineState
     do {
-      pipelineState = try Renderer.device.makeRenderPipelineState(descriptor: psoDescriptor)
+      pipelineState = try RendererSystem.device.makeRenderPipelineState(descriptor: psoDescriptor)
     } catch let error {
       fatalError(error.localizedDescription)
     }
@@ -52,7 +52,7 @@ enum DebugLights {
   }()
 
   static let pointPipelineState: MTLRenderPipelineState = {
-    let library = Renderer.library
+    let library = RendererSystem.library
     let vertexFunction = library?.makeFunction(name: "vertex_debug")
     let fragmentFunction = library?.makeFunction(name: "fragment_debug_point")
     let psoDescriptor = MTLRenderPipelineDescriptor()
@@ -62,7 +62,7 @@ enum DebugLights {
     psoDescriptor.depthAttachmentPixelFormat = .depth32Float
     let pipelineState: MTLRenderPipelineState
     do {
-      pipelineState = try Renderer.device.makeRenderPipelineState(
+      pipelineState = try RendererSystem.device.makeRenderPipelineState(
         descriptor: psoDescriptor
       )
     } catch let error {
@@ -153,7 +153,7 @@ enum DebugLights {
           direction.y,
           direction.z + value))
     }
-    let buffer = Renderer.device.makeBuffer(
+    let buffer = RendererSystem.device.makeBuffer(
       bytes: &vertices,
       length: MemoryLayout<float3>.stride * vertices.count,
       options: [])
@@ -187,7 +187,7 @@ enum DebugLights {
       position.x + direction.x,
       position.y + direction.y,
       position.z + direction.z))
-    let buffer = Renderer.device.makeBuffer(
+    let buffer = RendererSystem.device.makeBuffer(
       bytes: &vertices,
       length: MemoryLayout<float3>.stride * vertices.count,
       options: [])
