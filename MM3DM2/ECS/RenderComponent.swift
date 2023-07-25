@@ -8,5 +8,8 @@
 import Foundation
 
 struct RenderComponent: Component {
-    let model: Model
+    var material: Material
+    var textures: TextureController
+    var reflectivity: Float
+    //transperancy I will deal with it later
 }

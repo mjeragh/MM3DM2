@@ -7,5 +7,5 @@
 
 import Foundation
 protocol Component {
-   
+   static var type: ComponentType { get } //I got this from bing
 }

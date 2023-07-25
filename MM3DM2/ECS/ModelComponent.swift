@@ -34,7 +34,7 @@
 
 import MetalKit
 
-class Model: Renderable, Properties {
+class ModelComponent: Component {
     var features: Features
     
     var id: ID

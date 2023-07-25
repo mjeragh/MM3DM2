@@ -9,4 +9,5 @@ import Foundation
 enum ComponentType  {
     case transform
     case render
+    case interactive
 }
