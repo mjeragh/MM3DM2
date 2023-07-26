@@ -8,6 +8,8 @@
 import Foundation
 
 struct RenderComponent: Component {
+    static var componentType  = "Render"
+    
     var material: Material
     var textures: TextureController
     var reflectivity: Float

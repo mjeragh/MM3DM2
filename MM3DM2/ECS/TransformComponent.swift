@@ -33,6 +33,9 @@
 import Foundation
 
 struct TransformComponent : Component {
+    static var componentType = "Transform"
+    
+    
   var position: float3 = [0, 0, 0]
   var rotation: float3 = [0, 0, 0] {
     didSet {

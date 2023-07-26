@@ -34,6 +34,7 @@ import MetalKit
 struct RenderableComponent : Component {
 //    var reflective : Bool {get}
   //  var instancesCount : Int { get}
+    static var componentType = "Renderable"
     var update: (Float) -> Void
     var render :(MTLRenderCommandEncoder, Uniforms, Params) -> Void
 }

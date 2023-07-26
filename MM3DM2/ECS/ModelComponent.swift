@@ -35,6 +35,9 @@
 import MetalKit
 
 class ModelComponent: Component {
+    
+    static var componentType  = "Model"
+    
     var features: Features
     
     var id: ID

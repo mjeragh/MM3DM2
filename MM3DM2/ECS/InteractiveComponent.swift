@@ -7,6 +7,8 @@
 
 import Foundation
 struct InteractiveComponent: Component {
+    static var componentType  = "Interactive"
+    
     var nodeGPU : NodeGPU
 }
 

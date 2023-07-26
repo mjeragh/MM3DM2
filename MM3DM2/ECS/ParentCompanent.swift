@@ -7,10 +7,15 @@
 
 import Foundation
 struct ParentComponent: Component {
+    static var componentType  = "Parent"
+    
     var parent: Entity
 }
 
 struct ChildrenComponent: Component {
+    static var componentType  = "Children"
+    
+    
     var children: [Entity]
 }
 
