@@ -8,34 +8,36 @@
 import Foundation
 import Metal
 
-class DeviceManager{
+class DeviceManager {
     private static var sharedInstance: DeviceManager?
-        
-        var device: MTLDevice!
-        var commandQueue: MTLCommandQueue!
-        var library : MTLLibrary!
-        
-        private init() {
-            guard
-                let device = MTLCreateSystemDefaultDevice(),
-                let commandQueue = device.makeCommandQueue() else {
-                    return
-            }
-            self.device = device
-            self.commandQueue = commandQueue
-            self.library = device.makeDefaultLibrary()
+    
+    var device: MTLDevice!
+    var commandQueue: MTLCommandQueue!
+    var library : MTLLibrary!
+    
+    private init() {
+        guard
+            let device = MTLCreateSystemDefaultDevice(),
+            let commandQueue = device.makeCommandQueue() else {
+                return
         }
-        
-        static func shared() throws -> DeviceManager {
-            if let instance = sharedInstance {
-                return instance
-            }
-            
-            guard let instance = DeviceManager() else {
-                throw NSError(domain: "DeviceManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "GPU not available"])
-            }
-            
-            sharedInstance = instance
+        self.device = device
+        self.commandQueue = commandQueue
+        self.library = device.makeDefaultLibrary()
+    }
+    
+    static func shared() throws -> DeviceManager {
+        if let instance = sharedInstance {
             return instance
         }
+        
+        let instance = DeviceManager()
+        if instance.device == nil || instance.commandQueue == nil {
+            throw NSError(domain: "DeviceManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "GPU not available"])
+        }
+        
+        sharedInstance = instance
+        return instance
     }
+}
+
