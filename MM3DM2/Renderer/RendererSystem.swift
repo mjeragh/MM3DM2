@@ -24,8 +24,9 @@ enum RendererError: Error {
 
 class RendererSystem: System {
     
+    //@UnwrapOrThrow var device = try? DeviceManager.shared().device
     
-    static var colorPixelFormat : MTLPixelFormat!
+   static var colorPixelFormat : MTLPixelFormat!
     
     var options: Options
     
@@ -40,17 +41,12 @@ class RendererSystem: System {
     var shadowCamera = OrthographicCamera()
     
     init(metalView: MTKView, options: Options) {
-      guard
-        let device = MTLCreateSystemDefaultDevice(),
-        let commandQueue = device.makeCommandQueue() else {
-          fatalError("GPU not available")
-      }
-        RendererSystem.device = device
-        RendererSystem.commandQueue = commandQueue
-        RendererSystem.library = device.makeDefaultLibrary()
+        
+        
         RendererSystem.colorPixelFormat = metalView.colorPixelFormat
        
-        metalView.device = device
+        metalView.device = try! DeviceManager.shared().device
+        
         metalView.depthStencilPixelFormat = .depth32Float
       
         depthStencilState = RendererSystem.buildDepthStencilState()!
@@ -77,7 +73,7 @@ class RendererSystem: System {
       descriptor.depthCompareFunction = .lessEqual
       descriptor.isDepthWriteEnabled = true
       return
-         RendererSystem.device.makeDepthStencilState(descriptor: descriptor)
+         try! DeviceManager.shared().device.makeDepthStencilState(descriptor: descriptor)
     }
     
     func initialize(_ scene: GameScene) {
@@ -127,7 +123,7 @@ extension RendererSystem {
     
     func draw(scene: GameScene, in view: MTKView) {
         guard
-            let commandBuffer = RendererSystem.commandQueue.makeCommandBuffer(),
+            let commandBuffer = try! DeviceManager.shared().commandQueue.makeCommandBuffer(),
             let descriptor = view.currentRenderPassDescriptor
         else {
             return

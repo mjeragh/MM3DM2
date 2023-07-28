@@ -62,7 +62,7 @@ class ModelComponent: Component {
       withExtension: nil) else {
       fatalError("Model: \(name) not found")
     }
-    let allocator = MTKMeshBufferAllocator(device: RendererSystem.device)
+    let allocator = MTKMeshBufferAllocator(device: try! DeviceManager.shared().device)
     let meshDescriptor = MDLVertexDescriptor.defaultLayout
     let asset = MDLAsset(
       url: assetURL,
@@ -81,7 +81,7 @@ class ModelComponent: Component {
       mtkMeshes.append(
         try! MTKMesh(
           mesh: mdlMesh,
-          device: RendererSystem.device))
+          device: try! DeviceManager.shared().device))
     }
     meshes = zip(mdlMeshes, mtkMeshes).map {
       Mesh(
