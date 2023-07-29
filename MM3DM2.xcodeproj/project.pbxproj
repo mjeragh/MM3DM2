@@ -53,6 +53,7 @@
 		B2C644E12A5C7F7A00538373 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644E02A5C7F7A00538373 /* System.swift */; };
 		B2DBF0042A72850F00A04737 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DBF0032A72850F00A04737 /* DeviceManager.swift */; };
 		B2DBF0062A739A2200A04737 /* PropertyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DBF0052A739A2200A04737 /* PropertyWrappers.swift */; };
+		B2DBF0082A73C40000A04737 /* RenderPassManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DBF0072A73C40000A04737 /* RenderPassManager.swift */; };
 		B2E2120A2A65B87600D45DA3 /* InteractiveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E212092A65B87600D45DA3 /* InteractiveComponent.swift */; };
 		B2FA482E2A49D28E00F1DA7B /* ShadowRenderPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48272A49D28E00F1DA7B /* ShadowRenderPass.swift */; };
 		B2FA482F2A49D28E00F1DA7B /* Pipelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA48282A49D28E00F1DA7B /* Pipelines.swift */; };
@@ -118,6 +119,7 @@
 		B2C644E02A5C7F7A00538373 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		B2DBF0032A72850F00A04737 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		B2DBF0052A739A2200A04737 /* PropertyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrappers.swift; sourceTree = "<group>"; };
+		B2DBF0072A73C40000A04737 /* RenderPassManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderPassManager.swift; sourceTree = "<group>"; };
 		B2E212092A65B87600D45DA3 /* InteractiveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveComponent.swift; sourceTree = "<group>"; };
 		B2FA48272A49D28E00F1DA7B /* ShadowRenderPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowRenderPass.swift; sourceTree = "<group>"; };
 		B2FA48282A49D28E00F1DA7B /* Pipelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pipelines.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			children = (
 				B2FA483A2A49F84200F1DA7B /* RendererSystem.swift */,
 				B2DBF0032A72850F00A04737 /* DeviceManager.swift */,
+				B2DBF0072A73C40000A04737 /* RenderPassManager.swift */,
 				B2FA48352A49F84200F1DA7B /* Identity.swift */,
 				B2FA48362A49F84200F1DA7B /* TextureController.swift */,
 				B2FA48372A49F84200F1DA7B /* Children.swift */,
@@ -424,6 +427,7 @@
 				B226DBA52A4A04F000E74501 /* Animation.swift in Sources */,
 				B210A4ED2A4228C700EFC271 /* Movement.swift in Sources */,
 				B2DBF0042A72850F00A04737 /* DeviceManager.swift in Sources */,
+				B2DBF0082A73C40000A04737 /* RenderPassManager.swift in Sources */,
 				B25F7B1C2A44A997002663BE /* Submesh.swift in Sources */,
 				B210A4D02A4225DE00EFC271 /* MM3DM2App.swift in Sources */,
 				B2FA483C2A49F84200F1DA7B /* TextureController.swift in Sources */,

@@ -35,9 +35,6 @@ class RendererSystem: System {
     var uniforms = Uniforms()
     var params = Params()
     
-    var forwardRenderPass: ForwardRenderPass
-    var shadowRenderPass : ShadowRenderPass
-    
     var shadowCamera = OrthographicCamera()
     
     init(metalView: MTKView, options: Options) {
@@ -52,9 +49,6 @@ class RendererSystem: System {
         depthStencilState = RendererSystem.buildDepthStencilState()!
         
         self.options = options
-        forwardRenderPass = ForwardRenderPass(view: metalView)
-        shadowRenderPass = ShadowRenderPass(view: metalView)
-      
        // super.init()
         
 
@@ -97,9 +91,9 @@ extension RendererSystem {
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
      //   scene?.sceneSizeWillChange(to: view.bounds.size)//, textureSize: size)
-        forwardRenderPass.resize(view: view, size: size)
-        shadowRenderPass.resize(view: view, size: size)
+        RenderPassManager.shared.resize(view: view, size: size)
         }
+    
         
     
     func updateUniforms(scene: GameScene) {
@@ -130,6 +124,7 @@ extension RendererSystem {
         }
         
         updateUniforms(scene: scene)
+        
         
 //        shadowRenderPass.draw(commandBuffer: commandBuffer, scene: scene, uniforms: uniforms, params: params)
         
