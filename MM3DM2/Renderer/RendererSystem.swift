@@ -117,27 +117,15 @@ extension RendererSystem {
     
     func draw(scene: GameScene, in view: MTKView) {
         guard
-            let commandBuffer = try! DeviceManager.shared().commandQueue.makeCommandBuffer(),
-            let descriptor = view.currentRenderPassDescriptor
-        else {
+            let commandBuffer = try! DeviceManager.shared().commandQueue.makeCommandBuffer()
+         else {
             return
         }
         
         updateUniforms(scene: scene)
         
+        RenderPassManager.shared.draw(commandBuffer: commandBuffer, scene: scene, uniforms: uniforms, params: params, view: view)
         
-//        shadowRenderPass.draw(commandBuffer: commandBuffer, scene: scene, uniforms: uniforms, params: params)
-        
-       forwardRenderPass.descriptor = descriptor
-            forwardRenderPass.shadowTexture = shadowRenderPass.shadowTexture
-            forwardRenderPass.draw(
-              commandBuffer: commandBuffer,
-              scene: scene,
-              uniforms: uniforms,
-              params: params)
-       
-        
-
         
         guard let drawable = view.currentDrawable else {
           return

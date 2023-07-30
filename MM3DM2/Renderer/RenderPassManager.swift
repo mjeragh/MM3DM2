@@ -25,7 +25,9 @@ class RenderPassManager {
     }
 
     func draw(commandBuffer: MTLCommandBuffer, scene: GameScene, uniforms: Uniforms, params: Params, view: MTKView) {
-        guard let descriptor = view.currentRenderPassDescriptor else {
+        
+        guard let commandBuffer = try! DeviceManager.shared().commandQueue.makeCommandBuffer(),
+                let descriptor = view.currentRenderPassDescriptor else {
             return
         }
 
