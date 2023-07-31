@@ -8,5 +8,5 @@
 import Foundation
 protocol System {
     /**I will need to think about Bing's suggestion**/
-    //func update()
+    func update(deltaTime: Float)
 }

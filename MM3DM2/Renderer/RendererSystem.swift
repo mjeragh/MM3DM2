@@ -23,7 +23,7 @@ enum RendererError: Error {
 }
 
 class RendererSystem: System {
-    
+   
     //@UnwrapOrThrow var device = try? DeviceManager.shared().device
     
    static var colorPixelFormat : MTLPixelFormat!
@@ -134,4 +134,10 @@ extension RendererSystem {
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
     }
+    
+    func update(deltaTime: Float) {
+        <#code#>
+    }
+    
+    
 }

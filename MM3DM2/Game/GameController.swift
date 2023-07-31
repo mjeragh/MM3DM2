@@ -45,6 +45,7 @@ class GameController: NSObject {
     renderer = RendererSystem(metalView: metalView, options: options)
     scene = GameScene()
     renderer.initialize(scene)
+      RenderPassManager.shared.
     super.init()
     self.options = options
     metalView.delegate = self
@@ -53,12 +54,12 @@ class GameController: NSObject {
 
 extension GameController: MTKViewDelegate {
   func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-    scene.update(size: size)
+      scene.update(size: size)
       scene.width = Float(view.bounds.width)
       scene.height = Float(view.bounds.height)
       scene.uniforms.width = scene.width
       scene.uniforms.height = scene.height
-    renderer.mtkView(view, drawableSizeWillChange: size)
+      renderer.mtkView(view, drawableSizeWillChange: size)
   }
 
   func draw(in view: MTKView) {
