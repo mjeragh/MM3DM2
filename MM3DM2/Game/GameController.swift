@@ -45,7 +45,7 @@ class GameController: NSObject {
     renderer = RendererSystem(metalView: metalView, options: options)
     scene = GameScene()
     renderer.initialize(scene)
-      RenderPassManager.shared.
+    RenderPassManager.initialize(with: metalView)
     super.init()
     self.options = options
     metalView.delegate = self

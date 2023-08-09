@@ -7,27 +7,30 @@
 
 import Foundation
 import MetalKit
+
 class RenderPassManager {
-    static let shared = RenderPassManager(view: MTKView())
-    private var view: MTKView!
+    static var shared: RenderPassManager? // Singleton instance, to be initialized later
     
-    
+    private var view: MTKView // Private variable to hold the view
     var forwardRenderPass: ForwardRenderPass
     var shadowRenderPass: ShadowRenderPass
 
-   private init(view: MTKView) {
-        forwardRenderPass = ForwardRenderPass(view: view)
-        shadowRenderPass = ShadowRenderPass(view: view)
-       self.view = view
-    
+    private init() {
+        // Initialize render passes with a placeholder view; will be updated later
+        forwardRenderPass = ForwardRenderPass(view: MTKView())
+        shadowRenderPass = ShadowRenderPass(view: MTKView())
     }
 
-    func resize(view: MTKView, size: CGSize) {
-        forwardRenderPass.resize(view: view, size: size)
-        shadowRenderPass.resize(view: view, size: size)
-        self.view = view //Im not sure about this
-    
+    // Singleton initialization method
+    static func initialize(with view: MTKView) {
+        shared = RenderPassManager()
+        shared?.view = view // Set the view
+        //shared?.forwardRenderPass.updateView(view: view) // Update render passes with the correct view
+        //shared?.shadowRenderPass.updateView(view: view)
     }
+
+    // Other methods remain the same
+
 
     func draw(commandBuffer: MTLCommandBuffer, scene: GameScene, uniforms: Uniforms, params: Params, view: MTKView) {
         
