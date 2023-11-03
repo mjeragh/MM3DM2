@@ -31,6 +31,10 @@ class RenderPassManager {
 
     // Other methods remain the same
 
+    func resize(view: MTKView, size: CGSize) {
+        forwardRenderPass.resize(view: view, size: size)
+        shadowRenderPass.resize(view: view, size: size)
+    }
 
     func draw(commandBuffer: MTLCommandBuffer, scene: GameScene, uniforms: Uniforms, params: Params, view: MTKView) {
         

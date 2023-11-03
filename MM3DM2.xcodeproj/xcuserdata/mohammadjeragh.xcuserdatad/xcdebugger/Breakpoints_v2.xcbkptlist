@@ -3,4 +3,22 @@
    uuid = "660AFCC3-82C9-46FB-9A41-4CE57878A64C"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C376ED8-A710-4A00-8330-F3774AF59E6A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MM3DM2/Shaders/Shaders.metal"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "fragment_main (VertexOut in [[stage_in]], constant Material &amp;material [[buffer(MaterialBuffer)]], constant Light *lights [[buffer(LightBuffer)]], constant Params &amp;params [[buffer(ParamsBuffer)]], depth2d&lt;float&gt; shadowTexture [[texture(15)]])"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

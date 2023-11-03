@@ -91,7 +91,7 @@ extension RendererSystem {
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
      //   scene?.sceneSizeWillChange(to: view.bounds.size)//, textureSize: size)
-        RenderPassManager.shared.resize(view: view, size: size)
+        RenderPassManager.shared!.resize(view: view, size: size)
         }
     
         
@@ -124,7 +124,7 @@ extension RendererSystem {
         
         updateUniforms(scene: scene)
         
-        RenderPassManager.shared.draw(commandBuffer: commandBuffer, scene: scene, uniforms: uniforms, params: params, view: view)
+        RenderPassManager.shared!.draw(commandBuffer: commandBuffer, scene: scene, uniforms: uniforms, params: params, view: view)
         
         
         guard let drawable = view.currentDrawable else {
