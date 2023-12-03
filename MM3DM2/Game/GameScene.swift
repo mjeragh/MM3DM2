@@ -49,16 +49,17 @@ struct GameScene {
     var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
     
     //GPU Definition
-    let commandQueue = RendererSystem.device.makeCommandQueue()
+    let sharedDevice = try! DeviceManager.shared().device
+    let commandQueue = try! DeviceManager.shared().device.makeCommandQueue()
     var commandBuffer : MTLCommandBuffer!
     var computeEncoder : MTLComputeCommandEncoder!
     var computePipelineState: MTLComputePipelineState!
     var nodeGPUBuffer : MTLBuffer!
     var GPUBufferLength : Int
     let logger = Logger(subsystem: "com.lanterntech.MM3DUI", category: "Gamescene")
-    let totalBuffer = RendererSystem.device.makeBuffer(length: MemoryLayout<Int>.stride, options: [])
+    let totalBuffer = try! DeviceManager.shared().device.makeBuffer(length: MemoryLayout<Int>.stride, options: [])
     
-    var uniformBuffer = RendererSystem.device.makeBuffer(length: MemoryLayout<Uniforms>.stride, options: [])
+    var uniformBuffer = try! DeviceManager.shared().device.makeBuffer(length: MemoryLayout<Uniforms>.stride, options: [])
     let answer : UnsafeMutablePointer<Int>
     let uniformPointer : UnsafeMutablePointer<Uniforms>
     
@@ -155,8 +156,8 @@ struct GameScene {
         
         computeEncoder?.setBuffer(nodeGPUBuffer, offset: 0, index: 0)
         computeEncoder.setBuffer(uniformBuffer, offset: 0, index: 1)
-        let computeFunction = RendererSystem.device.makeDefaultLibrary()?.makeFunction(name: "testKernel")!//(name: "raytracingKernel")!
-        computePipelineState = try! RendererSystem.device.makeComputePipelineState(function: computeFunction!)
+        let computeFunction = try! DeviceManager.shared().device.makeDefaultLibrary()?.makeFunction(name: "testKernel")!//(name: "raytracingKernel")!
+        computePipelineState = try! DeviceManager.shared().device.makeComputePipelineState(function: computeFunction!)
         computeEncoder?.setComputePipelineState(computePipelineState)
         let threadsPerThreadGrid = MTLSizeMake(GPUBufferLength, 1, 1)
         computeEncoder?.dispatchThreadgroups(threadsPerThreadGrid, threadsPerThreadgroup: MTLSizeMake(1, 1, 1))
@@ -191,7 +192,7 @@ struct GameScene {
             GPUBufferLength += (model as! Properties).interactive ? 1 : 0
             }
         
-        nodeGPUBuffer = RendererSystem.device.makeBuffer(length: GPUBufferLength * MemoryLayout<NodeGPU>.stride, options: .storageModeShared)
+        nodeGPUBuffer = try! DeviceManager.shared().device.makeBuffer(length: GPUBufferLength * MemoryLayout<NodeGPU>.stride, options: .storageModeShared)
      
         //need to compute the local rays
         var pointer = nodeGPUBuffer?.contents().bindMemory(to: NodeGPU.self, capacity: GPUBufferLength)
