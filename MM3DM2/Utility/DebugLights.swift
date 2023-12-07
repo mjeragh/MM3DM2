@@ -34,7 +34,7 @@ import MetalKit
 
 enum DebugLights {
   static let linePipelineState: MTLRenderPipelineState = {
-    let library = RendererSystem.library
+    let library = try! DeviceManager.shared().library
     let vertexFunction = library?.makeFunction(name: "vertex_debug")
     let fragmentFunction = library?.makeFunction(name: "fragment_debug_line")
     let psoDescriptor = MTLRenderPipelineDescriptor()
@@ -44,7 +44,7 @@ enum DebugLights {
     psoDescriptor.depthAttachmentPixelFormat = .depth32Float
     let pipelineState: MTLRenderPipelineState
     do {
-      pipelineState = try! DeviceManager.shared().device.makeRenderPipelineState(descriptor: psoDescriptor)
+      pipelineState = try DeviceManager.shared().device.makeRenderPipelineState(descriptor: psoDescriptor)
     } catch let error {
       fatalError(error.localizedDescription)
     }
@@ -52,7 +52,7 @@ enum DebugLights {
   }()
 
   static let pointPipelineState: MTLRenderPipelineState = {
-    let library = try! DeviceManager.shared().device.library
+    let library = try! DeviceManager.shared().library
     let vertexFunction = library?.makeFunction(name: "vertex_debug")
     let fragmentFunction = library?.makeFunction(name: "fragment_debug_point")
     let psoDescriptor = MTLRenderPipelineDescriptor()
@@ -62,7 +62,7 @@ enum DebugLights {
     psoDescriptor.depthAttachmentPixelFormat = .depth32Float
     let pipelineState: MTLRenderPipelineState
     do {
-      pipelineState = try RendererSystem.device.makeRenderPipelineState(
+        pipelineState = try DeviceManager.shared().device.makeRenderPipelineState(
         descriptor: psoDescriptor
       )
     } catch let error {
