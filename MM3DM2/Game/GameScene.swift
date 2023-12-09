@@ -36,7 +36,7 @@ import os.log
 struct GameScene {
  
     var counter = 0.0
-    var models: [RenderableComponent] = []
+    var entities : [GameEntity] = []
     var selectedProperty : Properties! = nil
     var width : Float = 0.0
     var height : Float = 0.0
@@ -211,5 +211,12 @@ struct GameScene {
         
         
     }
-    
+    //from #ChatGPT
+    func createModelEntity(name: String, id: Int) -> GameEntity {
+            var entity = GameEntity(id: id)
+            let modelComponent = ModelComponent(name: name)
+            entity.addComponent(modelComponent)
+            entities.append(entity)
+            return entity
+        }
 }
