@@ -44,9 +44,9 @@ struct GameScene {
     var lighting = SceneLighting()
     var uniforms = Uniforms()
     
-    var sun, moon, land : Model
-    var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
-    var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
+    let sun, moon, land : GameEntity
+//    var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
+//    var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
     
     //GPU Definition
     let sharedDevice = try! DeviceManager.shared().device
@@ -66,27 +66,31 @@ struct GameScene {
   init() {
       answer = (totalBuffer?.contents().bindMemory(to: Int.self, capacity: 1))!
       uniformPointer = (uniformBuffer?.contents().bindMemory(to: Uniforms.self, capacity: 1))!
-      land = Model(name: "plane1000.usda")
-      land.position = [0,0,0]
+      let landEntity = createModelEntity(name: "plane1000.usda", position: [0,0,0], rotation: float3(0,0,0), scale: 100, id: UUID())
+      let moonEntity = createModelEntity(name: "pegShader.usda", position: [2,22,43], rotation: float3(0,0,0), scale: 1.5, id: UUID())
+      let sunEntity = createModelEntity(name: "pegShader.usda", position: [0,20,0], rotation: float3(0,0,0), scale: 4.0, id: UUID())
+      // Set additional properties on landEntity if needed
+
+      //land.position = [0,0,0]
       //land.materials.baseColor = [0.01,0.51,0.01]
-      models.append(land)
-      for number in 0..<8 {
-          pegs[number] = Model(name: "pegShader.usda")
-          pegs[number].position = [150,8,Float(120 + number * -35)]
-          pegs[number].features.interactive = true
-          models.append(pegs[number])
-      }
-      moon = Model(name: "pegShader.usda")
-      moon.scale = 1.5
-      sun = Model(name: "pegShader.usda")
-      sun.scale = 4.0
-      
-      sun.position = [0,20,0]
-      moon.position = [2,22,43]
-      
-      models.append(sun)
-      models.append(moon)
-      
+//      models.append(land)
+//      for number in 0..<8 {
+//          pegs[number] = Model(name: "pegShader.usda")
+//          pegs[number].position = [150,8,Float(120 + number * -35)]
+//          pegs[number].features.interactive = true
+//          models.append(pegs[number])
+//      }
+//      moon = Model(name: "pegShader.usda")
+//      moon.scale = 1.5
+//      sun = Model(name: "pegShader.usda")
+//      sun.scale = 4.0
+//      
+//      sun.position = [0,20,0]
+//      moon.position = [2,22,43]
+//      
+//      models.append(sun)
+//      models.append(moon)
+//      
       sun.name = "Sun"
       moon.name = "Moon"
       land.name = "land"
@@ -104,8 +108,8 @@ struct GameScene {
       
       lighting.lights[0].position = [0,200,-100]
       
-      GPUBufferLength = 0
-      buildGPUBuffers()
+//      GPUBufferLength = 0
+//      buildGPUBuffers()
       uniforms.viewMatrix = camera.viewMatrix.inverse
       uniforms.projectionMatrix = camera.projectionMatrix.inverse
       
@@ -212,11 +216,14 @@ struct GameScene {
         
     }
     //from #ChatGPT
-    func createModelEntity(name: String, id: Int) -> GameEntity {
-            var entity = GameEntity(id: id)
-            let modelComponent = ModelComponent(name: name)
-            entity.addComponent(modelComponent)
-            entities.append(entity)
-            return entity
-        }
+    func createModelEntity(name: String, position: float3, rotation: float3, scale: Float, id: UUID = UUID()) -> GameEntity {
+        var entity = GameEntity(id: id)
+        let modelComponent = ModelComponent(name: name)
+        let transformComponent = TransformComponent(position: position, rotation: rotation, scale: scale)
+        entity.addComponent(modelComponent)
+        entity.addComponent(transformComponent)
+        entities.append(entity)
+        return entity
+    }
+
 }

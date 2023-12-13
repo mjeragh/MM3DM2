@@ -8,10 +8,10 @@
 import Foundation
 
 class GameEntity: Entity {
-    var entityID: Int
+    var entityID: UUID
     var components: [String: Component] = [:]
 
-    init(id: Int) {
+    init(id: UUID = UUID()) {
         self.entityID = id
     }
 

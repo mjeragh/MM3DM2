@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct RenderComponent: Component {
-    static var componentType  = "Render"
+struct VisualComponent: Component {
+    static var componentType  = "Visual"
     
     var material: Material
     var textures: TextureController

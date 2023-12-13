@@ -50,7 +50,7 @@
 		B2C644D72A59855F00538373 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644D62A59855F00538373 /* Entity.swift */; };
 		B2C644D92A59DDEB00538373 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644D82A59DDEB00538373 /* Component.swift */; };
 		B2C644DD2A5B36F400538373 /* ParentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644DC2A5B36F400538373 /* ParentComponent.swift */; };
-		B2C644DF2A5B392400538373 /* RenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644DE2A5B392400538373 /* RenderComponent.swift */; };
+		B2C644DF2A5B392400538373 /* VisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644DE2A5B392400538373 /* VisualComponent.swift */; };
 		B2C644E12A5C7F7A00538373 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644E02A5C7F7A00538373 /* System.swift */; };
 		B2DBF0042A72850F00A04737 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DBF0032A72850F00A04737 /* DeviceManager.swift */; };
 		B2DBF0062A739A2200A04737 /* PropertyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DBF0052A739A2200A04737 /* PropertyWrappers.swift */; };
@@ -117,7 +117,7 @@
 		B2C644D62A59855F00538373 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		B2C644D82A59DDEB00538373 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B2C644DC2A5B36F400538373 /* ParentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentComponent.swift; sourceTree = "<group>"; };
-		B2C644DE2A5B392400538373 /* RenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
+		B2C644DE2A5B392400538373 /* VisualComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualComponent.swift; sourceTree = "<group>"; };
 		B2C644E02A5C7F7A00538373 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		B2DBF0032A72850F00A04737 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		B2DBF0052A739A2200A04737 /* PropertyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrappers.swift; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 				B2C644E02A5C7F7A00538373 /* System.swift */,
 				B2FA48392A49F84200F1DA7B /* TransformComponent.swift */,
 				B2C644DC2A5B36F400538373 /* ParentComponent.swift */,
-				B2C644DE2A5B392400538373 /* RenderComponent.swift */,
+				B2C644DE2A5B392400538373 /* VisualComponent.swift */,
 				B2FA48382A49F84200F1DA7B /* RenderableComponent.swift */,
 				B2E212092A65B87600D45DA3 /* InteractiveComponent.swift */,
 				B25F7B162A44A997002663BE /* ModelComponent.swift */,
@@ -415,7 +415,7 @@
 				B226DB982A49F9F600E74501 /* Lighting.metal in Sources */,
 				B2DBF0062A739A2200A04737 /* PropertyWrappers.swift in Sources */,
 				B210A4DF2A42272500EFC271 /* MetalView.swift in Sources */,
-				B2C644DF2A5B392400538373 /* RenderComponent.swift in Sources */,
+				B2C644DF2A5B392400538373 /* VisualComponent.swift in Sources */,
 				B2FA483B2A49F84200F1DA7B /* Identity.swift in Sources */,
 				B226DBA62A4A04F000E74501 /* AnimationTransformComponent.swift in Sources */,
 				B226DB972A49F9F600E74501 /* Shadow.metal in Sources */,
