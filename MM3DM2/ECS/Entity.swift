@@ -9,7 +9,7 @@ import Foundation
 // A protocol that defines the common interface for all entities
 protocol Entity {
     // A unique identifier for each entity instance
-    var entityID: UUID { get }
+    var entityID: ID { get }
     // A dictionary that stores the components attached to this entity
     var components: [String: Component] { get set }
     // A method that adds a component to this entity

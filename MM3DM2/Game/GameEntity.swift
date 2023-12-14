@@ -7,12 +7,20 @@
 
 import Foundation
 
+struct ID {
+    
+    var name  = "untitled"
+    var identifier = UUID()
+}
+
+
 class GameEntity: Entity {
-    var entityID: UUID
+    var entityID: ID
     var components: [String: Component] = [:]
 
-    init(id: UUID = UUID()) {
-        self.entityID = id
+    init(name: String, id: UUID = UUID()) {
+        self.entityID.name = name
+        self.entityID.identifier = id
     }
 
     func addComponent(_ component: Component) {

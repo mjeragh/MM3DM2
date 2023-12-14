@@ -10,5 +10,6 @@ struct InteractiveComponent: Component {
     static var componentType  = "Interactive"
     
     var nodeGPU : NodeGPU
+    var interactive = true // I think it is redudnat here
 }
 
