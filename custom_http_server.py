@@ -4,7 +4,7 @@ import http.server
 class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def translate_path(self, path):
         # Replace this with the directory you want to serve
-        target_directory = '/path/to/your/directory'
+        target_directory = '/Users/mohammadjeragh/Library/CloudStorage/Dropbox/Source/Xcode/XCodeProjects/MM3DM2'
         target_directory = os.path.realpath(target_directory)
         
         # Make sure the request is for a file within target_directory

@@ -1,0 +1,55 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["Material", "Sphere"]
+    def Sphere "Sphere" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/Sphere/DefaultMaterial>
+        double radius = 5
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:mtlx:surface.connect = </Root/Sphere/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            token outputs:surface
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (51.688843, 125.84479)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 101.5)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 14
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 0, 0) (
+                    colorSpace = "Input - Texture - Linear - sRGB"
+                )
+                color3f inputs:diffuseColor.connect = None
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "MaterialXPreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                color3f inputs:diffuseColor = (1, 0, 0) (
+                    colorSpace = "Input - Texture - Linear - sRGB"
+                )
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (-412.31927, 127.67145)
+                float2 ui:nodegraph:node:size = (207.5, 309.5)
+                int ui:nodegraph:node:stackingOrder = 16
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out", "Advanced", "inputs:clearcoat"]
+            }
+        }
+    }
+}
+

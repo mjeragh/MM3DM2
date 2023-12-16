@@ -38,7 +38,7 @@ class ModelComponent: Component {
     
     static var componentType  = "Model"
     
-    var features: Features
+//    var features: Features
     
     var id: ID
     
@@ -98,9 +98,9 @@ class ModelComponent: Component {
         
         boundingBox = asset.boundingBox
         let bBox = BoundingBox(minBounds: boundingBox.minBounds, maxBounds: boundingBox.maxBounds)
-        let nodeGPU = NodeGPU(localRay: LocalRay(localOrigin: float3(), localDirection: float3()), boundingBox: bBox, parameter: 0.0, modelMatrix: transform.modelMatrix, debug: 0)
+//        let nodeGPU = NodeGPU(localRay: LocalRay(localOrigin: float3(), localDirection: float3()), boundingBox: bBox, parameter: 0.0, modelMatrix: transform.modelMatrix, debug: 0)
     id = ID(name: name)
-    features = Features(reflection: reflective, interactive: interactive, nodeGPU: nodeGPU)
+//    features = Features(reflection: reflective, interactive: interactive, nodeGPU: nodeGPU)
   }
 
   func update(deltaTime: Float) {
