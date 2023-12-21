@@ -37,14 +37,13 @@ struct GameScene {
  
     var counter = 0.0
     var entities : [GameEntity] = []
-    var selectedProperty : Properties! = nil
+    //var selectedProperty : Properties! = nil
     var width : Float = 0.0
     var height : Float = 0.0
-    var camera = ArcballCamera()//FPCamera()
-    var lighting = SceneLighting()
+   var lighting = SceneLighting()
     var uniforms = Uniforms()
     
-    let sun, moon, land : GameEntity
+    let fpCameraEntity, arcballCameraEntity, sunEntity, moonEntity, landEntity : GameEntity
 //    var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
 //    var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
     
@@ -66,9 +65,10 @@ struct GameScene {
   init() {
       answer = (totalBuffer?.contents().bindMemory(to: Int.self, capacity: 1))!
       uniformPointer = (uniformBuffer?.contents().bindMemory(to: Uniforms.self, capacity: 1))!
-      let landEntity = createModelEntity(name: "plane1000.usda", position: [0,0,0], rotation: float3(0,0,0), scale: 100, id: UUID())
-      let moonEntity = createModelEntity(name: "pegShader.usda", position: [2,22,43], rotation: float3(0,0,0), scale: 1.5, id: UUID())
-      let sunEntity = createModelEntity(name: "pegShader.usda", position: [0,20,0], rotation: float3(0,0,0), scale: 4.0, id: UUID())
+      landEntity = createModelEntity(name: "plane1000.usda", position: [0,0,0], rotation: float3(0,0,0), scale: 100, id: UUID())
+      moonEntity = createModelEntity(name: "pegShader.usda", position: [2,22,43], rotation: float3(0,0,0), scale: 1.5, id: UUID())
+      sunEntity = createModelEntity(name: "pegShader.usda", position: [0,20,0], rotation: float3(0,0,0), scale: 4.0, id: UUID())
+      
       // Set additional properties on landEntity if needed
 
       //land.position = [0,0,0]
@@ -91,9 +91,9 @@ struct GameScene {
 //      models.append(sun)
 //      models.append(moon)
 //      
-      sun.name = "Sun"
-      moon.name = "Moon"
-      land.name = "land"
+      sunEntity.entityID.name = "Sun"
+      moonEntity.entityID.name = "Moon"
+      landEntity.entityID.name = "land"
 //      sun.materials.baseColor = [1,0,0]
 //      sun.materials.secondColor = [1,0,1]
 //      sun.materials.shininess = 32;
@@ -117,7 +117,8 @@ struct GameScene {
 
 
   mutating func update(size: CGSize) {
-    camera.update(size: size)
+    fpCameraEntity.update(size: size)
+    arcballCameraEntity.update(size: size)
   }
 
   mutating func update(deltaTime: Float) {
@@ -217,7 +218,7 @@ struct GameScene {
     }
     //from #ChatGPT
     func createModelEntity(name: String, position: float3, rotation: float3, scale: Float, id: UUID = UUID()) -> GameEntity {
-        var entity = GameEntity(id: id)
+        var entity = GameEntity(name: name, id: id)
         let modelComponent = ModelComponent(name: name)
         let transformComponent = TransformComponent(position: position, rotation: rotation, scale: scale)
         entity.addComponent(modelComponent)

@@ -47,6 +47,7 @@
 		B25F7B1B2A44A997002663BE /* ModelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F7B162A44A997002663BE /* ModelComponent.swift */; };
 		B25F7B1C2A44A997002663BE /* Submesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F7B172A44A997002663BE /* Submesh.swift */; };
 		B25F7B1D2A44A997002663BE /* VertexDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F7B182A44A997002663BE /* VertexDescriptor.swift */; };
+		B2A6244F2B2F4EAA00169DEC /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A6244E2B2F4EAA00169DEC /* CameraComponent.swift */; };
 		B2C644D72A59855F00538373 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644D62A59855F00538373 /* Entity.swift */; };
 		B2C644D92A59DDEB00538373 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644D82A59DDEB00538373 /* Component.swift */; };
 		B2C644DD2A5B36F400538373 /* ParentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C644DC2A5B36F400538373 /* ParentComponent.swift */; };
@@ -114,6 +115,7 @@
 		B25F7B162A44A997002663BE /* ModelComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelComponent.swift; sourceTree = "<group>"; };
 		B25F7B172A44A997002663BE /* Submesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Submesh.swift; sourceTree = "<group>"; };
 		B25F7B182A44A997002663BE /* VertexDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexDescriptor.swift; sourceTree = "<group>"; };
+		B2A6244E2B2F4EAA00169DEC /* CameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraComponent.swift; sourceTree = "<group>"; };
 		B2C644D62A59855F00538373 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		B2C644D82A59DDEB00538373 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		B2C644DC2A5B36F400538373 /* ParentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentComponent.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				B2FA48382A49F84200F1DA7B /* RenderableComponent.swift */,
 				B2E212092A65B87600D45DA3 /* InteractiveComponent.swift */,
 				B25F7B162A44A997002663BE /* ModelComponent.swift */,
+				B2A6244E2B2F4EAA00169DEC /* CameraComponent.swift */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				B2C644D92A59DDEB00538373 /* Component.swift in Sources */,
 				B210A4E82A42289B00EFC271 /* DebugLights.metal in Sources */,
 				B210A4E72A42289B00EFC271 /* DebugLights.swift in Sources */,
+				B2A6244F2B2F4EAA00169DEC /* CameraComponent.swift in Sources */,
 				B226DB992A49F9F600E74501 /* PBR.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
