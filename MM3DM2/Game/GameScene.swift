@@ -40,10 +40,11 @@ struct GameScene {
     //var selectedProperty : Properties! = nil
     var width : Float = 0.0
     var height : Float = 0.0
-   var lighting = SceneLighting()
+    var lighting = SceneLighting()
     var uniforms = Uniforms()
     
-    let fpCameraEntity, arcballCameraEntity, sunEntity, moonEntity, landEntity : GameEntity
+    let sunEntity, moonEntity, landEntity : GameEntity
+    var fpCameraEntity, arcballCameraEntity, cameraEntity : GameEntity
 //    var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
 //    var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
     
@@ -68,7 +69,7 @@ struct GameScene {
       landEntity = createModelEntity(name: "plane1000.usda", position: [0,0,0], rotation: float3(0,0,0), scale: 100, id: UUID())
       moonEntity = createModelEntity(name: "pegShader.usda", position: [2,22,43], rotation: float3(0,0,0), scale: 1.5, id: UUID())
       sunEntity = createModelEntity(name: "pegShader.usda", position: [0,20,0], rotation: float3(0,0,0), scale: 4.0, id: UUID())
-      
+      cameraSetup()
       // Set additional properties on landEntity if needed
 
       //land.position = [0,0,0]
@@ -84,13 +85,13 @@ struct GameScene {
 //      moon.scale = 1.5
 //      sun = Model(name: "pegShader.usda")
 //      sun.scale = 4.0
-//      
+//
 //      sun.position = [0,20,0]
 //      moon.position = [2,22,43]
-//      
+//
 //      models.append(sun)
 //      models.append(moon)
-//      
+//
       sunEntity.entityID.name = "Sun"
       moonEntity.entityID.name = "Moon"
       landEntity.entityID.name = "land"
@@ -115,6 +116,18 @@ struct GameScene {
       
     }
 
+    mutating func cameraSetup() {
+        fpCameraEntity = GameEntity(name: "First Person Camera")
+        arcballCameraEntity = GameEntity(name: "Arcball Camera")
+        let cameraComponent = CameraComponent(aspect: 1, fov: 90, near: 0.1, far: 1000)
+        let fpTransform = TransformComponent(position: [0, 0, -150], rotation: [0, 0, 0])
+        let arcballTransform = TransformComponent(position: [0, 0, -320], rotation: [0, 0, 0])
+        fpCameraEntity.addComponent(cameraComponent)
+        fpCameraEntity.addComponent(FPCameraComponent(transform: fpTransform))
+        arcballCameraEntity.addComponent(cameraComponent)
+        arcballCameraEntity.addComponent(arcballTransform)
+        cameraEntity = arcballCameraEntity
+    }
 
   mutating func update(size: CGSize) {
     fpCameraEntity.update(size: size)
@@ -185,39 +198,39 @@ struct GameScene {
     }
     
     mutating func asyncInverse() async {
-        uniforms.viewMatrix = await camera.viewMatrix.asyncInverse!
-        uniforms.projectionMatrix = await camera.projectionMatrix.asyncInverse!
+//        uniforms.viewMatrix = await cameraEntt.viewMatrix.asyncInverse!
+//        uniforms.projectionMatrix = await camera.projectionMatrix.asyncInverse!
     }
     
     mutating func buildGPUBuffers() {
         
         //creating Bounding Buffer
-        
-        models.forEach{ model in
-            GPUBufferLength += (model as! Properties).interactive ? 1 : 0
-            }
-        
-        nodeGPUBuffer = try! DeviceManager.shared().device.makeBuffer(length: GPUBufferLength * MemoryLayout<NodeGPU>.stride, options: .storageModeShared)
-     
-        //need to compute the local rays
-        var pointer = nodeGPUBuffer?.contents().bindMemory(to: NodeGPU.self, capacity: GPUBufferLength)
-        
-        //rootNode.children.forEach
-        models.forEach{ model in
-            if var item = model as? Properties {
-                if item.interactive {
-                                    item.nodeGPU.modelMatrix = model.transform.modelMatrix
-                                    pointer?.pointee = item.nodeGPU
-                                    pointer = pointer?.advanced(by: 1) //from page 451 metalbytutorialsV2
-                            }
-            }
-            
-       }//EachModel
+//
+//        models.forEach{ model in
+//            GPUBufferLength += (model as! Properties).interactive ? 1 : 0
+//            }
+//
+//        nodeGPUBuffer = try! DeviceManager.shared().device.makeBuffer(length: GPUBufferLength * MemoryLayout<NodeGPU>.stride, options: .storageModeShared)
+//
+//        //need to compute the local rays
+//        var pointer = nodeGPUBuffer?.contents().bindMemory(to: NodeGPU.self, capacity: GPUBufferLength)
+//
+//        //rootNode.children.forEach
+//        models.forEach{ model in
+//            if var item = model as? Properties {
+//                if item.interactive {
+//                                    item.nodeGPU.modelMatrix = model.transform.modelMatrix
+//                                    pointer?.pointee = item.nodeGPU
+//                                    pointer = pointer?.advanced(by: 1) //from page 451 metalbytutorialsV2
+//                            }
+//            }
+//
+//       }//EachModel
         
         
     }
     //from #ChatGPT
-    func createModelEntity(name: String, position: float3, rotation: float3, scale: Float, id: UUID = UUID()) -> GameEntity {
+    mutating func createModelEntity(name: String, position: float3, rotation: float3, scale: Float, id: UUID = UUID()) -> GameEntity {
         var entity = GameEntity(name: name, id: id)
         let modelComponent = ModelComponent(name: name)
         let transformComponent = TransformComponent(position: position, rotation: rotation, scale: scale)

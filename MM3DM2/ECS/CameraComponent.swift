@@ -59,6 +59,24 @@ struct ArcballCameraComponent: Component {
     }
 
     mutating func updateViewMatrix() -> float4x4 {
-        // Logic to calculate the arcball camera view matrix
+        let upDirection = float3(0, 1, 0)  // Assuming up is in the y-direction
+        let cameraPosition = calculateCameraPosition()
+        
+        return float4x4(eye: cameraPosition, center: target, up: upDirection)
     }
+
+    private func calculateCameraPosition() -> float3 {
+        // Calculate spherical coordinates
+        let sphericalRadius = distance
+        let sphericalTheta = transform.rotation.x  // Assuming rotation.x is the azimuth angle
+        let sphericalPhi = transform.rotation.y  // Assuming rotation.y is the elevation angle
+
+        // Convert spherical coordinates to Cartesian coordinates for the camera position
+        let x = sphericalRadius * sin(sphericalPhi) * cos(sphericalTheta)
+        let y = sphericalRadius * cos(sphericalPhi)
+        let z = sphericalRadius * sin(sphericalPhi) * sin(sphericalTheta)
+
+        return float3(x, y, z) + target
+    }
+
 }
