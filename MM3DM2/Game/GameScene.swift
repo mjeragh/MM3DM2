@@ -130,7 +130,7 @@ struct GameScene {
     }
 
   mutating func update(size: CGSize) {
-    fpCameraEntity.update(size: size)
+      fpCameraEntity.getComponent(CameraComponent). .update(size: size)
     arcballCameraEntity.update(size: size)
   }
 
