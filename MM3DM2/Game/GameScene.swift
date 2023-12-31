@@ -64,8 +64,8 @@ struct GameScene {
     let uniformPointer : UnsafeMutablePointer<Uniforms>
     
   init() {
-      answer = (totalBuffer?.contents().bindMemory(to: Int.self, capacity: 1))!
-      uniformPointer = (uniformBuffer?.contents().bindMemory(to: Uniforms.self, capacity: 1))!
+//      answer = (totalBuffer?.contents().bindMemory(to: Int.self, capacity: 1))!
+//      uniformPointer = (uniformBuffer?.contents().bindMemory(to: Uniforms.self, capacity: 1))!
       landEntity = createModelEntity(name: "plane1000.usda", position: [0,0,0], rotation: float3(0,0,0), scale: 100, id: UUID())
       moonEntity = createModelEntity(name: "pegShader.usda", position: [2,22,43], rotation: float3(0,0,0), scale: 1.5, id: UUID())
       sunEntity = createModelEntity(name: "pegShader.usda", position: [0,20,0], rotation: float3(0,0,0), scale: 4.0, id: UUID())
@@ -102,10 +102,10 @@ struct GameScene {
 //      moon.materials.baseColor = [0,0,1]
       
       //camera.far = 1000
-      camera.position = [0,0,-320]
-      camera.distance = length(camera.position)
-      camera.target = [0, 0, 0]
-      camera.rotation.x =  -π / 4
+//      camera.position = [0,0,-320]
+//      camera.distance = length(camera.position)
+//      camera.target = [0, 0, 0]
+//      camera.rotation.x =  -π / 4
       
       lighting.lights[0].position = [0,200,-100]
       
@@ -131,13 +131,19 @@ struct GameScene {
 
   mutating func update(size: CGSize) {
       fpCameraEntity.getComponent(CameraComponent). .update(size: size)
-    arcballCameraEntity.update(size: size)
+      arcballCameraEntity.update(size: size)
   }
 
   mutating func update(deltaTime: Float) {
 //    let maxDistance: Float = 2
     let stride = 0.5 * deltaTime
-      moon.position =  [30 * Float( cos(counter)), 22 ,-1.0 + 30 * Float(sin(counter))]
+      if var transformComponent = moonEntity.getComponent(TransformComponent.self) {
+          transformComponent.position = [30 * Float(cos(counter)), 22, -1.0 + 30 * Float(sin(counter))]
+          // Update the component back to the entity
+          moonEntity.addComponent(transformComponent)
+      } else {
+          // Handle the case where TransformComponent is not found
+      }
       counter = counter + Double(stride)
     for model in models {
       model.update(deltaTime: deltaTime)
