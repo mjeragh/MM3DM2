@@ -33,40 +33,80 @@
 import MetalKit
 
 class GameController: NSObject {
-  var scene: GameScene
-  var renderer: RendererSystem!
-  var options = Options()
-  static var fps: Double = 0
-  var deltaTime: Double = 0
-  var lastTime: Double = CFAbsoluteTimeGetCurrent()
+    var scene: GameScene
+    var renderer: RendererSystem!
+    var options = Options()
+    static var fps: Double = 0
+    var deltaTime: Double = 0
+    var lastTime: Double = CFAbsoluteTimeGetCurrent()
 
-  init(metalView: MTKView, options: Options) {
-    Self.fps = Double(metalView.preferredFramesPerSecond)
-    renderer = RendererSystem(metalView: metalView, options: options)
-    scene = GameScene()
-    renderer.initialize(scene)
-    RenderPassManager.initialize(with: metalView)
-    super.init()
-    self.options = options
-    metalView.delegate = self
-  }
+    init(metalView: MTKView, options: Options) {
+        Self.fps = Double(metalView.preferredFramesPerSecond)
+        scene = GameScene()  // Initialize GameScene which now manages entities and systems.
+        super.init()
+        self.options = options
+        metalView.delegate = self
+        initializeSystems(metalView: metalView)  // New function to initialize systems.
+    }
+
+    // New function to initialize systems.
+    private func initializeSystems(metalView: MTKView) {
+        renderer = RendererSystem(metalView: metalView, options: options)
+        scene.addSystem(renderer)  // Add the renderer system to the scene.
+        RenderPassManager.initialize(with: metalView)
+    }
 }
 
 extension GameController: MTKViewDelegate {
-  func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-      scene.update(size: size)
-      scene.width = Float(view.bounds.width)
-      scene.height = Float(view.bounds.height)
-      scene.uniforms.width = scene.width
-      scene.uniforms.height = scene.height
-      renderer.mtkView(view, drawableSizeWillChange: size)
-  }
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        scene.update(size: size)
+        renderer.mtkView(view, drawableSizeWillChange: size)
+    }
 
-  func draw(in view: MTKView) {
-    let currentTime = CFAbsoluteTimeGetCurrent()
-    let deltaTime = (currentTime - lastTime)
-    lastTime = currentTime
-    scene.update(deltaTime: Float(deltaTime))
-    renderer.draw(scene: scene, in: view)
-  }
+    func draw(in view: MTKView) {
+        let currentTime = CFAbsoluteTimeGetCurrent()
+        deltaTime = currentTime - lastTime
+        lastTime = currentTime
+        scene.update(deltaTime: Float(deltaTime))  // Update the scene which updates all systems.
+        renderer.draw(scene: scene, in: view)  // Render the scene.
+    }
 }
+
+//class GameController: NSObject {
+//  var scene: GameScene
+//  var renderer: RendererSystem!
+//  var options = Options()
+//  static var fps: Double = 0
+//  var deltaTime: Double = 0
+//  var lastTime: Double = CFAbsoluteTimeGetCurrent()
+//
+//  init(metalView: MTKView, options: Options) {
+//    Self.fps = Double(metalView.preferredFramesPerSecond)
+//    renderer = RendererSystem(metalView: metalView, options: options)
+//    scene = GameScene()
+//    renderer.initialize(scene)
+//    RenderPassManager.initialize(with: metalView)
+//    super.init()
+//    self.options = options
+//    metalView.delegate = self
+//  }
+//}
+//
+//extension GameController: MTKViewDelegate {
+//  func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+//      scene.update(size: size)
+//      scene.width = Float(view.bounds.width)
+//      scene.height = Float(view.bounds.height)
+//      scene.uniforms.width = scene.width
+//      scene.uniforms.height = scene.height
+//      renderer.mtkView(view, drawableSizeWillChange: size)
+//  }
+//
+//  func draw(in view: MTKView) {
+//    let currentTime = CFAbsoluteTimeGetCurrent()
+//    let deltaTime = (currentTime - lastTime)
+//    lastTime = currentTime
+//    scene.update(deltaTime: Float(deltaTime))
+//    renderer.draw(scene: scene, in: view)
+//  }
+//}

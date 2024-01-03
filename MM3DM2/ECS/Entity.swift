@@ -18,4 +18,5 @@ protocol Entity {
     mutating func removeComponent(_ componentType: String)
     // A method that returns a component of a given type from this entity
     func getComponent<T: Component>(_ componentType: T.Type) -> T?
+    func updateComponent<T: Component>(_ componentType: T.Type, update: (inout T) -> Void)
 }

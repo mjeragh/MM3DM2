@@ -15,6 +15,19 @@ struct ID {
 
 
 class GameEntity: Entity {
+    func updateComponent<T>(_ componentType: T.Type, update: (inout T) -> Void) where T : Component {
+        if var component = getComponent(componentType) {
+            update(&component)
+            
+            if T.self is AnyClass {
+                // If component is a class, it's already updated.
+            } else {
+                // If component is a struct, replace the old component.
+                addComponent(component)
+            }
+        }
+    }
+    
     var entityID: ID
     var components: [String: Component] = [:]
 
@@ -35,4 +48,5 @@ class GameEntity: Entity {
         let typeName = String(describing: componentType)
         return components[typeName] as? T
     }
+    
 }

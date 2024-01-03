@@ -33,10 +33,10 @@
 import MetalKit
 import os.log
 
-struct GameScene {
+class GameScene {
  
-    var counter = 0.0
-    var entities : [GameEntity] = []
+    private var entities = [GameEntity]()
+    
     //var selectedProperty : Properties! = nil
     var width : Float = 0.0
     var height : Float = 0.0
@@ -48,21 +48,9 @@ struct GameScene {
 //    var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
 //    var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
     
-    //GPU Definition
-    let sharedDevice = try! DeviceManager.shared().device
-    let commandQueue = try! DeviceManager.shared().device.makeCommandQueue()
-    var commandBuffer : MTLCommandBuffer!
-    var computeEncoder : MTLComputeCommandEncoder!
-    var computePipelineState: MTLComputePipelineState!
-    var nodeGPUBuffer : MTLBuffer!
-    var GPUBufferLength : Int
+
     let logger = Logger(subsystem: "com.lanterntech.MM3DUI", category: "Gamescene")
-    let totalBuffer = try! DeviceManager.shared().device.makeBuffer(length: MemoryLayout<Int>.stride, options: [])
-    
-    var uniformBuffer = try! DeviceManager.shared().device.makeBuffer(length: MemoryLayout<Uniforms>.stride, options: [])
-    let answer : UnsafeMutablePointer<Int>
-    let uniformPointer : UnsafeMutablePointer<Uniforms>
-    
+   
   init() {
 //      answer = (totalBuffer?.contents().bindMemory(to: Int.self, capacity: 1))!
 //      uniformPointer = (uniformBuffer?.contents().bindMemory(to: Uniforms.self, capacity: 1))!
@@ -137,12 +125,8 @@ struct GameScene {
   mutating func update(deltaTime: Float) {
 //    let maxDistance: Float = 2
     let stride = 0.5 * deltaTime
-      if var transformComponent = moonEntity.getComponent(TransformComponent.self) {
-          transformComponent.position = [30 * Float(cos(counter)), 22, -1.0 + 30 * Float(sin(counter))]
-          // Update the component back to the entity
-          moonEntity.addComponent(transformComponent)
-      } else {
-          // Handle the case where TransformComponent is not found
+      moonEntity.updateComponent(TransformComponent.self) { transform in
+          transform.position = [30 * Float(cos(counter)), 22, -1.0 + 30 * Float(sin(counter))]
       }
       counter = counter + Double(stride)
     for model in models {
