@@ -36,8 +36,7 @@ import os.log
 class GameScene {
  
     private var entities = [GameEntity]()
-    
-    //var selectedProperty : Properties! = nil
+    private var systems = [System]()
     var width : Float = 0.0
     var height : Float = 0.0
     var lighting = SceneLighting()
@@ -45,66 +44,28 @@ class GameScene {
     
     let sunEntity, moonEntity, landEntity : GameEntity
     var fpCameraEntity, arcballCameraEntity, cameraEntity : GameEntity
-//    var pegs : [Model] = Array(repeating:Model(name: "peg.usda"), count: 8)
-//    var colors : [float3] = [[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[0,0,0],[1,1,1]]
-    
+    var counter = 0.0
 
     let logger = Logger(subsystem: "com.lanterntech.MM3DUI", category: "Gamescene")
    
   init() {
-//      answer = (totalBuffer?.contents().bindMemory(to: Int.self, capacity: 1))!
-//      uniformPointer = (uniformBuffer?.contents().bindMemory(to: Uniforms.self, capacity: 1))!
       landEntity = createModelEntity(name: "plane1000.usda", position: [0,0,0], rotation: float3(0,0,0), scale: 100, id: UUID())
       moonEntity = createModelEntity(name: "pegShader.usda", position: [2,22,43], rotation: float3(0,0,0), scale: 1.5, id: UUID())
       sunEntity = createModelEntity(name: "pegShader.usda", position: [0,20,0], rotation: float3(0,0,0), scale: 4.0, id: UUID())
       cameraSetup()
-      // Set additional properties on landEntity if needed
-
-      //land.position = [0,0,0]
-      //land.materials.baseColor = [0.01,0.51,0.01]
-//      models.append(land)
-//      for number in 0..<8 {
-//          pegs[number] = Model(name: "pegShader.usda")
-//          pegs[number].position = [150,8,Float(120 + number * -35)]
-//          pegs[number].features.interactive = true
-//          models.append(pegs[number])
-//      }
-//      moon = Model(name: "pegShader.usda")
-//      moon.scale = 1.5
-//      sun = Model(name: "pegShader.usda")
-//      sun.scale = 4.0
-//
-//      sun.position = [0,20,0]
-//      moon.position = [2,22,43]
-//
-//      models.append(sun)
-//      models.append(moon)
-//
+      
       sunEntity.entityID.name = "Sun"
       moonEntity.entityID.name = "Moon"
       landEntity.entityID.name = "land"
-//      sun.materials.baseColor = [1,0,0]
-//      sun.materials.secondColor = [1,0,1]
-//      sun.materials.shininess = 32;
-//      sun.materials.specularColor = [1,0,0]
-//      moon.materials.baseColor = [0,0,1]
-      
-      //camera.far = 1000
-//      camera.position = [0,0,-320]
-//      camera.distance = length(camera.position)
-//      camera.target = [0, 0, 0]
-//      camera.rotation.x =  -π / 4
-      
+
       lighting.lights[0].position = [0,200,-100]
       
-//      GPUBufferLength = 0
-//      buildGPUBuffers()
       uniforms.viewMatrix = camera.viewMatrix.inverse
       uniforms.projectionMatrix = camera.projectionMatrix.inverse
       
     }
 
-    mutating func cameraSetup() {
+    func cameraSetup() {
         fpCameraEntity = GameEntity(name: "First Person Camera")
         arcballCameraEntity = GameEntity(name: "Arcball Camera")
         let cameraComponent = CameraComponent(aspect: 1, fov: 90, near: 0.1, far: 1000)
@@ -117,110 +78,39 @@ class GameScene {
         cameraEntity = arcballCameraEntity
     }
 
-  mutating func update(size: CGSize) {
-      fpCameraEntity.getComponent(CameraComponent). .update(size: size)
-      arcballCameraEntity.update(size: size)
+  func update(size: CGSize) {
+      self.width = Float(size.width)
+        self.height = Float(size.height)
+      uniforms.width = Float(size.width)
+      uniforms.height = Float(size.height)
+//      fpCameraEntity.getComponent(CameraComponent). .update(size: size)
+//      arcballCameraEntity.update(size: size)
   }
 
-  mutating func update(deltaTime: Float) {
+  func update(deltaTime: Float) {
 //    let maxDistance: Float = 2
     let stride = 0.5 * deltaTime
       moonEntity.updateComponent(TransformComponent.self) { transform in
           transform.position = [30 * Float(cos(counter)), 22, -1.0 + 30 * Float(sin(counter))]
       }
       counter = counter + Double(stride)
-    for model in models {
-      model.update(deltaTime: deltaTime)
+    for system in systems {
+      system.update(deltaTime: deltaTime)
     }
-   
-    camera.update(deltaTime: deltaTime)
-//    print(camera.position, camera.rotation)
-//      if !(InputController.shared.keysPressed.isEmpty) {
-//          print("key Pressed \(String(describing: InputController.shared.keysPressed.popFirst()))")
-//      }
-  }
-    mutating func handleInteraction(at point: CGPoint) {
-       let startTime = CFAbsoluteTimeGetCurrent()
-        uniforms.point.x = Float(point.x)
-        uniforms.point.y = Float(point.y)
-//        uniforms.projectionMatrix = camera.projectionMatrix
-//        uniforms.viewMatrix = camera.viewMatrix
-        
-        
-        uniformPointer.pointee = uniforms
-        
-        commandBuffer = commandQueue!.makeCommandBuffer()
-        computeEncoder = commandBuffer.makeComputeCommandEncoder()
-        computeEncoder.pushDebugGroup("handleInteraction")
-        
-//        uniforms.origin = worldRayOrigin
-//        uniforms.direction = worldRayDir
-        
-        //setup local rays
-        // I have to figure this out!
-        
-        answer.pointee = 8
-        computeEncoder.setBuffer(totalBuffer, offset: 0, index: 2)
-        
-        computeEncoder?.setBuffer(nodeGPUBuffer, offset: 0, index: 0)
-        computeEncoder.setBuffer(uniformBuffer, offset: 0, index: 1)
-        let computeFunction = try! DeviceManager.shared().device.makeDefaultLibrary()?.makeFunction(name: "testKernel")!//(name: "raytracingKernel")!
-        computePipelineState = try! DeviceManager.shared().device.makeComputePipelineState(function: computeFunction!)
-        computeEncoder?.setComputePipelineState(computePipelineState)
-        let threadsPerThreadGrid = MTLSizeMake(GPUBufferLength, 1, 1)
-        computeEncoder?.dispatchThreadgroups(threadsPerThreadGrid, threadsPerThreadgroup: MTLSizeMake(1, 1, 1))
-        computeEncoder?.endEncoding()
-        computeEncoder?.popDebugGroup()
-//        commandBuffer.addCompletedHandler{
-//            _ in
-//            (self.answer.pointee > 7) ? print("no hit") : print("Hit peg\(self.answer.pointee)")
-//            print("CPU and GPU selected time:\(CFAbsoluteTimeGetCurrent() - startTime)")
-//        }
-        commandBuffer?.commit()
-//        uniforms.viewMatrix = camera.viewMatrix.inverse
-//        uniforms.projectionMatrix = camera.projectionMatrix.inverse
-        commandBuffer?.waitUntilCompleted()
 
-        (answer.pointee > 7) ? logger.debug("no hit") : print("Hit peg\(answer.pointee)")
-        logger.debug("time: \(CFAbsoluteTimeGetCurrent() - startTime)")
-//        logger.debug("CPU and GPU selected time:\(CFAbsoluteTimeGetCurrent() - startTime)")
-//        pointer = nodeGPUBuffer?.contents().bindMemory(to: NodeGPU.self, capacity: GPUBufferLength) //debugging purpose
-    }
+  }
+
+    func addEntity(_ entity: GameEntity) {
+            entities.append(entity)
+        }
+
+        func addSystem(_ system: System) {
+            systems.append(system)
+        }
     
-    mutating func asyncInverse() async {
-//        uniforms.viewMatrix = await cameraEntt.viewMatrix.asyncInverse!
-//        uniforms.projectionMatrix = await camera.projectionMatrix.asyncInverse!
-    }
-    
-    mutating func buildGPUBuffers() {
-        
-        //creating Bounding Buffer
-//
-//        models.forEach{ model in
-//            GPUBufferLength += (model as! Properties).interactive ? 1 : 0
-//            }
-//
-//        nodeGPUBuffer = try! DeviceManager.shared().device.makeBuffer(length: GPUBufferLength * MemoryLayout<NodeGPU>.stride, options: .storageModeShared)
-//
-//        //need to compute the local rays
-//        var pointer = nodeGPUBuffer?.contents().bindMemory(to: NodeGPU.self, capacity: GPUBufferLength)
-//
-//        //rootNode.children.forEach
-//        models.forEach{ model in
-//            if var item = model as? Properties {
-//                if item.interactive {
-//                                    item.nodeGPU.modelMatrix = model.transform.modelMatrix
-//                                    pointer?.pointee = item.nodeGPU
-//                                    pointer = pointer?.advanced(by: 1) //from page 451 metalbytutorialsV2
-//                            }
-//            }
-//
-//       }//EachModel
-        
-        
-    }
+   
     //from #ChatGPT
-    mutating func createModelEntity(name: String, position: float3, rotation: float3, scale: Float, id: UUID = UUID()) -> GameEntity {
+    func createModelEntity(name: String, position: float3, rotation: float3, scale: Float, id: UUID = UUID()) -> GameEntity {
         var entity = GameEntity(name: name, id: id)
         let modelComponent = ModelComponent(name: name)
         let transformComponent = TransformComponent(position: position, rotation: rotation, scale: scale)
