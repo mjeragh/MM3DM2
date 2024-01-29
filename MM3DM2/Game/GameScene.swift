@@ -66,6 +66,19 @@ class GameScene {
     }
 
     func cameraSetup() {
+        let cameraEntity = GameEntity(name: "MainCamera")
+        let cameraTransform = TransformComponent() // set initial position, rotation if needed
+        let cameraComponent = CameraComponent(type: .firstPerson,
+                                              transform: cameraTransform,
+                                              aspect: Float(view.bounds.width / view.bounds.height),
+                                              fov: Float(70).degreesToRadians,
+                                              near: 0.1,
+                                              far: 1000)
+        cameraEntity.addComponent(cameraComponent)
+        cameraEntity.addComponent(cameraTransform)
+        scene.addEntity(cameraEntity)
+        
+        
         fpCameraEntity = GameEntity(name: "First Person Camera")
         arcballCameraEntity = GameEntity(name: "Arcball Camera")
         let cameraComponent = CameraComponent(aspect: 1, fov: 90, near: 0.1, far: 1000)

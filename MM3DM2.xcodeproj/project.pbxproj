@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B200A99E2B666BF700F80A5D /* CameraSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B200A99D2B666BF700F80A5D /* CameraSystem.swift */; };
 		B210A4D02A4225DE00EFC271 /* MM3DM2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4CF2A4225DE00EFC271 /* MM3DM2App.swift */; };
 		B210A4D22A4225DE00EFC271 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4D12A4225DE00EFC271 /* ContentView.swift */; };
 		B210A4D42A4225DF00EFC271 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B210A4D32A4225DF00EFC271 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B200A99D2B666BF700F80A5D /* CameraSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSystem.swift; sourceTree = "<group>"; };
 		B210A4CC2A4225DE00EFC271 /* MM3DM2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MM3DM2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B210A4CF2A4225DE00EFC271 /* MM3DM2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MM3DM2App.swift; sourceTree = "<group>"; };
 		B210A4D12A4225DE00EFC271 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				B2E212092A65B87600D45DA3 /* InteractiveComponent.swift */,
 				B25F7B162A44A997002663BE /* ModelComponent.swift */,
 				B2A6244E2B2F4EAA00169DEC /* CameraComponent.swift */,
+				B200A99D2B666BF700F80A5D /* CameraSystem.swift */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				B226DB982A49F9F600E74501 /* Lighting.metal in Sources */,
 				B2DBF0062A739A2200A04737 /* PropertyWrappers.swift in Sources */,
 				B210A4DF2A42272500EFC271 /* MetalView.swift in Sources */,
+				B200A99E2B666BF700F80A5D /* CameraSystem.swift in Sources */,
 				B2C644DF2A5B392400538373 /* VisualComponent.swift in Sources */,
 				B2FA483B2A49F84200F1DA7B /* Identity.swift in Sources */,
 				B226DBA62A4A04F000E74501 /* AnimationTransformComponent.swift in Sources */,
