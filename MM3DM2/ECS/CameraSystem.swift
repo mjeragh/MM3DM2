@@ -1,33 +1,34 @@
-//
-//  CameraSystem.swift
-//  MM3DM2
-//
-//  Created by Mohammad Jeragh on 28/01/2024.
-//
-
 import simd
 
 class CameraSystem: System {
-    var entities : [Entity] = []
-    
+    var entities: [Entity] = []
+
     func setEntity(_ entities: [Entity]) {
         self.entities = entities
     }
-    
-    func update(deltaTime: Float) {
-        for entity in entities(withComponents: CameraComponent.self, TransformComponent.self) {
-            guard var cameraComponent = entity.getComponent(CameraComponent.self),
-                  let transformComponent = entity.getComponent(TransformComponent.self) else { continue }
-            
-            switch cameraComponent.type {
-            case .firstPerson:
-                updateFirstPersonCamera(&cameraComponent, transformComponent, deltaTime: deltaTime)
-            case .arcball:
-                updateArcballCamera(&cameraComponent, transformComponent, deltaTime: deltaTime)
-            }
 
-            cameraComponent.updateProjectionMatrix() // Update projection matrix
-            entity.updateComponent(cameraComponent)
+    func update(deltaTime: Float) {
+        for entity in entities {
+            // Only proceed if both components are available.
+            if var cameraComponent = entity.getComponent(CameraComponent.self),
+               let transformComponent = entity.getComponent(TransformComponent.self) {
+                
+                // Update the camera based on its type.
+                switch cameraComponent.type {
+                case .firstPerson:
+                    updateFirstPersonCamera(&cameraComponent, transformComponent, deltaTime: deltaTime)
+                case .arcball:
+                    updateArcballCamera(&cameraComponent, transformComponent, deltaTime: deltaTime)
+                }
+                
+                // Update the projection matrix of the camera.
+                cameraComponent.updateProjectionMatrix()
+                
+                // Apply the changes to the entity's component.
+                entity.updateComponent(CameraComponent.self) { component in
+                    component = cameraComponent
+                }
+            }
         }
     }
 
@@ -43,5 +44,13 @@ class CameraSystem: System {
         let rotatedVector = rotateMatrix * distanceVector
         let position = camera.target + rotatedVector.xyz
         camera.viewMatrix = float4x4(eye: position, center: camera.target, up: [0, 1, 0])
+    }
+
+    private func entities(withComponents componentTypes: Component.Type...) -> [Entity] {
+        return entities.filter { entity in
+            componentTypes.allSatisfy { type in
+                entity.getComponent(type) != nil
+            }
+        }
     }
 }
