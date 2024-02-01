@@ -22,7 +22,12 @@ enum RendererError: Error {
     case badVertexDescriptor
 }
 
-class RendererSystem: System {
+class RendererSystem: SizeAwareSystem {
+    
+    func update(size: CGSize) {
+        <#code#>
+    }
+    
    
     //@UnwrapOrThrow var device = try? DeviceManager.shared().device
     

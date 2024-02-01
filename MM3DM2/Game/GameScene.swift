@@ -62,7 +62,8 @@ class GameScene {
 
       //chat set the sun as the light source
       //lighting.lights[0].position = [0,200,-100]
-      
+      cameraSystem = CameraSystem()
+      addSystem(cameraSystem!)
     }
 
     func cameraSetup() {
@@ -136,7 +137,7 @@ class GameScene {
             entities.append(entity)
         }
 
-        func addSystem(_ system: System) {
+    func addSystem(_ system: System) {
             systems.append(system)
         }
     
