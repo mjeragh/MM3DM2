@@ -46,6 +46,7 @@ class GameScene {
     var cameraEntity : GameEntity
     var counter = 0.0
     var cameraSystem : CameraSystem?
+    var redererSystem : RendererSystem?
     
     let logger = Logger(subsystem: "com.lanterntech.MM3DUI", category: "Gamescene")
    
@@ -120,10 +121,11 @@ class GameScene {
         // Update camera system with entities
         cameraSystem?.setEntity(entities)
     }
-  func update(deltaTime: Float) {
+    
+    func update(deltaTime: Float) {
 //    let maxDistance: Float = 2
-    let stride = 0.5 * deltaTime
-      moonEntity.updateComponent(TransformComponent.self) { transform in
+        let stride = 0.5 * deltaTime
+        moonEntity.updateComponent(TransformComponent.self) { transform in
           transform.position = [30 * Float(cos(counter)), 22, -1.0 + 30 * Float(sin(counter))]
       }
       counter = counter + Double(stride)
@@ -133,8 +135,13 @@ class GameScene {
 
   }
 
+    func setRendererSystem(_ renderer: RendererSystem){
+        self.redererSystem = renderer
+    }
+    
     func addEntity(_ entity: GameEntity) {
             entities.append(entity)
+            redererSystem?.setEntities(entities)
         }
 
     func addSystem(_ system: System) {
