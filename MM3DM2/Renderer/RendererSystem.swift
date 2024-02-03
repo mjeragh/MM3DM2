@@ -23,48 +23,23 @@ enum RendererError: Error {
 }
 
 class RendererSystem: SizeAwareSystem {
-    
-    func update(size: CGSize) {
-        <#code#>
-    }
-    
    
-    //@UnwrapOrThrow var device = try? DeviceManager.shared().device
-    
-   static var colorPixelFormat : MTLPixelFormat!
-    
+    var colorPixelFormat : MTLPixelFormat!
     var options: Options
-    
     let depthStencilState: MTLDepthStencilState
-    
     var uniforms = Uniforms()
     var params = Params()
-    
     var shadowCamera = OrthographicCamera()
     
     init(metalView: MTKView, options: Options) {
-        
-        
-        RendererSystem.colorPixelFormat = metalView.colorPixelFormat
-       
+        self.colorPixelFormat = metalView.colorPixelFormat
         metalView.device = try! DeviceManager.shared().device
-        
         metalView.depthStencilPixelFormat = .depth32Float
-      
         depthStencilState = RendererSystem.buildDepthStencilState()!
-        
         self.options = options
-       // super.init()
-        
-
-        metalView.clearColor = MTLClearColor(
-            red: 0.01,
-          green: 0.0,
-            blue: 0.1,
-          alpha: 1.0)
+        metalView.clearColor = MTLClearColor(red: 0.01, green: 0.0, blue: 0.1, alpha: 1.0)
         metalView.depthStencilPixelFormat = .depth32Float
         mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
-      
     }
     
      static func buildDepthStencilState() -> MTLDepthStencilState? {
@@ -94,16 +69,24 @@ class RendererSystem: SizeAwareSystem {
     
 extension RendererSystem {
     
+    
+    func update(size: CGSize) {
+        <#code#>
+    }
+    
+    func update(deltaTime: Float) {
+        <#code#>
+    }
+    
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
      //   scene?.sceneSizeWillChange(to: view.bounds.size)//, textureSize: size)
         RenderPassManager.shared!.resize(view: view, size: size)
         }
     
-        
     
     func updateUniforms(scene: GameScene) {
-        uniforms.projectionMatrix = scene.camera.projectionMatrix
-        uniforms.viewMatrix = scene.camera.viewMatrix
+        uniforms.projectionMatrix = scene.cameraEntity.getComponent(CameraComponent.self)!.projectionMatrix
+        uniforms.viewMatrix = //scene.camera.viewMatrix
         params.cameraPosition = scene.camera.position
         params.lightCount = uint(scene.lighting.lights.count)
         
@@ -140,9 +123,7 @@ extension RendererSystem {
         commandBuffer.waitUntilCompleted()
     }
     
-    func update(deltaTime: Float) {
-        <#code#>
-    }
+   
     
     
 }

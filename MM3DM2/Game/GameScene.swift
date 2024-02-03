@@ -46,7 +46,8 @@ class GameScene {
     var cameraEntity : GameEntity
     var counter = 0.0
     var cameraSystem : CameraSystem?
-    var redererSystem : RendererSystem?
+    //Note: I dont to access the renderSystem since Im passing the gamescene to the draw methoed in the rendereSystem
+    //var redererSystem : RendererSystem?
     
     let logger = Logger(subsystem: "com.lanterntech.MM3DUI", category: "Gamescene")
    
@@ -141,7 +142,7 @@ class GameScene {
     
     func addEntity(_ entity: GameEntity) {
             entities.append(entity)
-            redererSystem?.setEntities(entities)
+            //redererSystem?.setEntities(entities)
         }
 
     func addSystem(_ system: System) {
@@ -151,7 +152,7 @@ class GameScene {
    
     //from #ChatGPT
     func createModelEntity(name: String, position: float3, rotation: float3, scale: Float, id: UUID = UUID()) -> GameEntity {
-        var entity = GameEntity(name: name, id: id)
+        let entity = GameEntity(name: name, id: id)
         let modelComponent = ModelComponent(name: name)
         let transformComponent = TransformComponent(position: position, rotation: rotation, scale: scale)
         entity.addComponent(modelComponent)

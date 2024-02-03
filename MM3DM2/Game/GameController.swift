@@ -53,7 +53,7 @@ class GameController: NSObject {
     private func initializeSystems(metalView: MTKView) {
         renderer = RendererSystem(metalView: metalView, options: options)
         scene.addSystem(renderer)  // Add the renderer system to the scene.
-        scene.setRendererSystem(renderer)  // Set the renderer system as the scene's renderer.
+        //scene.setRendererSystem(renderer)  // Set the renderer system as the scene's renderer.
         RenderPassManager.initialize(with: metalView)
     }
 }
