@@ -29,7 +29,6 @@ class RendererSystem: SizeAwareSystem {
     let depthStencilState: MTLDepthStencilState
     var uniforms = Uniforms()
     var params = Params()
-    var shadowCamera = OrthographicCamera()
     
     init(metalView: MTKView, options: Options) {
         self.colorPixelFormat = metalView.colorPixelFormat
@@ -86,21 +85,10 @@ extension RendererSystem {
     
     func updateUniforms(scene: GameScene) {
         uniforms.projectionMatrix = scene.cameraEntity.getComponent(CameraComponent.self)!.projectionMatrix
-        uniforms.viewMatrix = //scene.camera.viewMatrix
-        params.cameraPosition = scene.camera.position
+        uniforms.viewMatrix = scene.cameraEntity.getComponent(CameraComponent.self)!.viewMatrix
+        params.cameraPosition = scene.cameraEntity.getComponent(TransformComponent.self)!.position
         params.lightCount = uint(scene.lighting.lights.count)
-        
-        shadowCamera.viewSize = 1650
-//        shadowCamera.far = 400
-        //FIXME: shadowcameraposition is the actual sun now, we need to care of the deferredRendering, for now the shadows are acceptable
-        let sun = scene.lighting.lights[0]
-        shadowCamera.position = sun.position
-        shadowCamera.rotation.x = π/2
-        
-         uniforms.shadowProjectionMatrix = shadowCamera.projectionMatrix
-        uniforms.shadowViewMatrix = float4x4(eye: sun.position, center: .zero, up: [0,1,0])
-//        uniforms.viewMatrix = uniforms.shadowViewMatrix
-//        uniforms.projectionMatrix = uniforms.shadowProjectionMatrix
+      
     }
     
     func draw(scene: GameScene, in view: MTKView) {
@@ -109,12 +97,8 @@ extension RendererSystem {
          else {
             return
         }
-        
         updateUniforms(scene: scene)
-        
         RenderPassManager.shared!.draw(commandBuffer: commandBuffer, scene: scene, uniforms: uniforms, params: params, view: view)
-        
-        
         guard let drawable = view.currentDrawable else {
           return
         }

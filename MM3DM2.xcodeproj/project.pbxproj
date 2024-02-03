@@ -22,7 +22,6 @@
 		B210A4EE2A4228C700EFC271 /* inputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4EC2A4228C700EFC271 /* inputController.swift */; };
 		B210A4F52A422A1F00EFC271 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4F12A422A1F00EFC271 /* GameController.swift */; };
 		B210A4F62A422A1F00EFC271 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4F22A422A1F00EFC271 /* GameScene.swift */; };
-		B210A4F72A422A1F00EFC271 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4F32A422A1F00EFC271 /* Camera.swift */; };
 		B210A4F82A422A1F00EFC271 /* SceneLighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B210A4F42A422A1F00EFC271 /* SceneLighting.swift */; };
 		B217BF062A4365A600CCF15F /* Ray.metal in Sources */ = {isa = PBXBuildFile; fileRef = B217BF032A4365A600CCF15F /* Ray.metal */; };
 		B217BF072A4365A600CCF15F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = B217BF052A4365A600CCF15F /* Shaders.metal */; };
@@ -88,7 +87,6 @@
 		B210A4EC2A4228C700EFC271 /* inputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inputController.swift; sourceTree = "<group>"; };
 		B210A4F12A422A1F00EFC271 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		B210A4F22A422A1F00EFC271 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		B210A4F32A422A1F00EFC271 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		B210A4F42A422A1F00EFC271 /* SceneLighting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLighting.swift; sourceTree = "<group>"; };
 		B217BEFF2A43602F00CCF15F /* stdbool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdbool.h; sourceTree = "<group>"; };
 		B217BF012A43609100CCF15F /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -240,7 +238,6 @@
 			children = (
 				B210A4F12A422A1F00EFC271 /* GameController.swift */,
 				B210A4F22A422A1F00EFC271 /* GameScene.swift */,
-				B210A4F32A422A1F00EFC271 /* Camera.swift */,
 				B210A4F42A422A1F00EFC271 /* SceneLighting.swift */,
 				B24EE1F52B247E8F00801892 /* GameEntity.swift */,
 			);
@@ -450,7 +447,6 @@
 				B2E2120A2A65B87600D45DA3 /* InteractiveComponent.swift in Sources */,
 				B2FA483F2A49F84200F1DA7B /* TransformComponent.swift in Sources */,
 				B210A4F82A422A1F00EFC271 /* SceneLighting.swift in Sources */,
-				B210A4F72A422A1F00EFC271 /* Camera.swift in Sources */,
 				B2FA482F2A49D28E00F1DA7B /* Pipelines.swift in Sources */,
 				B210A4EE2A4228C700EFC271 /* inputController.swift in Sources */,
 				B2C644D72A59855F00538373 /* Entity.swift in Sources */,

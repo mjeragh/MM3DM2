@@ -136,9 +136,6 @@ class GameScene {
 
   }
 
-    func setRendererSystem(_ renderer: RendererSystem){
-        self.redererSystem = renderer
-    }
     
     func addEntity(_ entity: GameEntity) {
             entities.append(entity)
