@@ -41,6 +41,13 @@ class RendererSystem: SizeAwareSystem {
         mtkView(metalView, drawableSizeWillChange: metalView.bounds.size)
     }
     
+    // This function will be called from the GameController
+        func updateViewProjection(viewMatrix: float4x4, projectionMatrix: float4x4) {
+            uniforms.viewMatrix = viewMatrix
+            uniforms.projectionMatrix = projectionMatrix
+        }
+    
+    
      static func buildDepthStencilState() -> MTLDepthStencilState? {
       let descriptor = MTLDepthStencilDescriptor()
       descriptor.depthCompareFunction = .lessEqual
@@ -69,10 +76,23 @@ class RendererSystem: SizeAwareSystem {
 extension RendererSystem {
     
     
-    func update(size: CGSize) {
-        <#code#>
-    }
-    
+    func update(size: CGSize, for scene: GameScene) {
+            // Update the aspect ratio and any other size-dependent states here.
+            // This typically involves updating the camera's projection matrix to
+            // accommodate the new aspect ratio of the view.
+
+            // Ensure that you have a reference to the camera entity or component
+            // to update its projection matrix. You could pass the GameScene or
+            // CameraEntity to this function to access the camera component.
+
+            // Example of updating the camera's aspect ratio:
+          
+        scene.updateCameraAspectRatio(size: size)
+            // Notify the RenderPassManager about the size change if it's responsible
+            // for handling render targets with specific sizes.
+        //FIXME: RenderPassManager.shared?.resize(view: metalView, size: size) was not commetted out, but the forwardpass manager was empty, so I commented it out, I will figure it out later
+        // RenderPassManager.shared?.resize(view: metalView, size: size)
+        }
     func update(deltaTime: Float) {
         <#code#>
     }
@@ -84,6 +104,7 @@ extension RendererSystem {
     
     
     func updateUniforms(scene: GameScene) {
+        let cameraComponent = scene.cameraEntity.getComponent(CameraComponent.self)!
         uniforms.projectionMatrix = scene.cameraEntity.getComponent(CameraComponent.self)!.projectionMatrix
         uniforms.viewMatrix = scene.cameraEntity.getComponent(CameraComponent.self)!.viewMatrix
         params.cameraPosition = scene.cameraEntity.getComponent(TransformComponent.self)!.position

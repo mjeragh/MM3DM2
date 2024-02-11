@@ -107,20 +107,16 @@ class GameScene {
         self.height = Float(size.height)
         uniforms.width = Float(size.width)
         uniforms.height = Float(size.height)
-        
-        // Update camera component with the new screen size
-        if var cameraComponent = cameraEntity.getComponent(CameraComponent.self) {
-            cameraComponent.aspect = self.width / self.height
-            cameraComponent.updateProjectionMatrix()
+            // Here, you'd adjust any game-specific elements that depend on the size.
+            // For example, if you have UI elements or gameplay areas that need to be resized
+            // or repositioned based on the new view size, handle those adjustments here.
             
-            // Update the camera entity with the new component values
-            cameraEntity.updateComponent(CameraComponent.self) { component in
-                component = cameraComponent
-            }
-        }
-        
-        // Update camera system with entities
-        cameraSystem?.setEntity(entities)
+            // The camera aspect ratio and projection matrix updates are assumed to be handled by
+            // the RendererSystem directly, as discussed.
+            
+            // If there are other systems or entities that need to be informed about the size change,
+            // consider how best to propagate this information in a way that fits the ECS architecture.
+       
     }
     
     func update(deltaTime: Float) {
@@ -158,4 +154,19 @@ class GameScene {
         return entity
     }
 
+    
+    func updateCameraAspectRatio(size: CGSize) {
+            let aspectRatio = Float(size.width / size.height)
+            
+            // Assuming `cameraEntity` is your camera entity that contains a CameraComponent
+            if var cameraComponent = cameraEntity.getComponent(CameraComponent.self) {
+                cameraComponent.aspect = aspectRatio
+                cameraComponent.updateProjectionMatrix()
+                cameraEntity.updateComponent(CameraComponent.self) { component in
+                    component = cameraComponent
+                }
+            }
+        }
+
+    
 }

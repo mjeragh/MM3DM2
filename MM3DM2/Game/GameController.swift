@@ -69,6 +69,7 @@ extension GameController: MTKViewDelegate {
         deltaTime = currentTime - lastTime
         lastTime = currentTime
         scene.update(deltaTime: Float(deltaTime))  // Update the scene which updates all systems.
+        
         renderer.draw(scene: scene, in: view)  // Render the scene.
     }
 }

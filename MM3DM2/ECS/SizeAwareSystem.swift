@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SizeAwareSystem : System {
-    func update(size: CGSize)
+    func update(size: CGSize, for scene: GameScene)
 }
