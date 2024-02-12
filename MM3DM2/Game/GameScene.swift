@@ -155,18 +155,19 @@ class GameScene {
     }
 
     
-    func updateCameraAspectRatio(size: CGSize) {
-            let aspectRatio = Float(size.width / size.height)
-            
-            // Assuming `cameraEntity` is your camera entity that contains a CameraComponent
-            if var cameraComponent = cameraEntity.getComponent(CameraComponent.self) {
+    func updateCameraAspectRatio(size: CGSize, for entities: [Entity]) {
+        let aspectRatio = Float(size.width / size.height)
+        
+        for entity in entities where entity.hasComponent(CameraComponent.self) {
+            if var cameraComponent = entity.getComponent(CameraComponent.self) {
                 cameraComponent.aspect = aspectRatio
                 cameraComponent.updateProjectionMatrix()
-                cameraEntity.updateComponent(CameraComponent.self) { component in
+                entity.updateComponent(CameraComponent.self) { component in
                     component = cameraComponent
                 }
             }
         }
+    }
 
     
 }

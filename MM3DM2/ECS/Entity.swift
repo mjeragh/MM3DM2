@@ -19,4 +19,14 @@ protocol Entity {
     // A method that returns a component of a given type from this entity
     func getComponent<T: Component>(_ componentType: T.Type) -> T?
     func updateComponent<T: Component>(_ componentType: T.Type, update: (inout T) -> Void)
+    // Existing protocol definitions...
+    func hasComponent<T: Component>(_ componentType: T.Type) -> Bool
+    // Other methods...
+}
+
+
+extension Entity {
+    func hasComponent<T: Component>(_ componentType: T.Type) -> Bool {
+        return components[componentType.componentType] != nil
+    }
 }
