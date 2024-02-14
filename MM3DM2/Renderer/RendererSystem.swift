@@ -10,6 +10,7 @@
 import Metal
 import MetalKit
 import simd
+import os.log
 
 // The 256 byte aligned size of our uniform structure
 //let alignedUniformsSize = (MemoryLayout<Uniforms>.size + 0xFF) & -0x100
@@ -29,6 +30,7 @@ class RendererSystem: SizeAwareSystem {
     let depthStencilState: MTLDepthStencilState
     var uniforms = Uniforms()
     var params = Params()
+    let logger = Logger(subsystem: "com.lanterntech.MM3DUI", category: "RendererSystem")
     
     init(metalView: MTKView, options: Options) {
         self.colorPixelFormat = metalView.colorPixelFormat
@@ -87,14 +89,14 @@ extension RendererSystem {
 
             // Example of updating the camera's aspect ratio:
           
-        scene.updateCameraAspectRatio(size: size)
+            scene.updateCameraAspectRatio(size: size)
             // Notify the RenderPassManager about the size change if it's responsible
             // for handling render targets with specific sizes.
         //FIXME: RenderPassManager.shared?.resize(view: metalView, size: size) was not commetted out, but the forwardpass manager was empty, so I commented it out, I will figure it out later
         // RenderPassManager.shared?.resize(view: metalView, size: size)
         }
     func update(deltaTime: Float) {
-        <#code#>
+        logger.log("Updating RendererSystem")
     }
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
@@ -104,10 +106,10 @@ extension RendererSystem {
     
     
     func updateUniforms(scene: GameScene) {
-        let cameraComponent = scene.cameraEntity.getComponent(CameraComponent.self)!
-        uniforms.projectionMatrix = scene.cameraEntity.getComponent(CameraComponent.self)!.projectionMatrix
-        uniforms.viewMatrix = scene.cameraEntity.getComponent(CameraComponent.self)!.viewMatrix
-        params.cameraPosition = scene.cameraEntity.getComponent(TransformComponent.self)!.position
+        let cameraComponent = scene.cameraEntity!.getComponent(CameraComponent.self)!
+        uniforms.projectionMatrix = scene.cameraEntity!.getComponent(CameraComponent.self)!.projectionMatrix
+        uniforms.viewMatrix = scene.cameraEntity!.getComponent(CameraComponent.self)!.viewMatrix
+        params.cameraPosition = scene.cameraEntity!.getComponent(TransformComponent.self)!.position
         params.lightCount = uint(scene.lighting.lights.count)
       
     }

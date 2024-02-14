@@ -41,9 +41,9 @@ class GameScene {
     var height : Float = 0.0
     var lighting = SceneLighting()
     var uniforms = Uniforms()
+    var cameraEntity : GameEntity?
     
-    let sunEntity, moonEntity, landEntity : GameEntity
-    var cameraEntity : GameEntity
+    let sunEntity, moonEntity, landEntity : GameEntity?
     var counter = 0.0
     var cameraSystem : CameraSystem?
     //Note: I dont to access the renderSystem since Im passing the gamescene to the draw methoed in the rendereSystem
@@ -52,19 +52,22 @@ class GameScene {
     let logger = Logger(subsystem: "com.lanterntech.MM3DUI", category: "Gamescene")
    
   init() {
+      
       landEntity = createModelEntity(name: "plane1000.usda", position: [0,0,0], rotation: float3(0,0,0), scale: 100, id: UUID())
       moonEntity = createModelEntity(name: "pegShader.usda", position: [2,22,43], rotation: float3(0,0,0), scale: 1.5, id: UUID())
       sunEntity = createModelEntity(name: "pegShader.usda", position: [0,20,0], rotation: float3(0,0,0), scale: 4.0, id: UUID())
-      cameraEntity = GameEntity(name: "MainCamera")
-      cameraSetup()
       
-      sunEntity.entityID.name = "Sun"
-      moonEntity.entityID.name = "Moon"
-      landEntity.entityID.name = "land"
+      
+      
+      sunEntity!.entityID.name = "Sun"
+      moonEntity!.entityID.name = "Moon"
+      landEntity!.entityID.name = "land"
 
       //chat set the sun as the light source
       //lighting.lights[0].position = [0,200,-100]
+      cameraSetup()//This will add the camera to the entities array
       cameraSystem = CameraSystem()
+      
       addSystem(cameraSystem!)
     }
 
@@ -94,12 +97,12 @@ class GameScene {
         let chosenCameraComponent = arcballCameraComponent // or fpCameraComponent for first-person
         
         // Create camera entity and add components
-        let cameraEntity = GameEntity(name: "Camera")
-        cameraEntity.addComponent(cameraTransform)
-        cameraEntity.addComponent(chosenCameraComponent)
+        cameraEntity = GameEntity(name: "Camera")
+        cameraEntity!.addComponent(cameraTransform)
+        cameraEntity!.addComponent(chosenCameraComponent)
         
         // Append the camera entity to the entities array
-        entities.append(cameraEntity)
+        entities.append(cameraEntity!)
     }
 
     func update(size: CGSize) {
@@ -122,7 +125,7 @@ class GameScene {
     func update(deltaTime: Float) {
 //    let maxDistance: Float = 2
         let stride = 0.5 * deltaTime
-        moonEntity.updateComponent(TransformComponent.self) { transform in
+        moonEntity!.updateComponent(TransformComponent.self) { transform in
           transform.position = [30 * Float(cos(counter)), 22, -1.0 + 30 * Float(sin(counter))]
       }
       counter = counter + Double(stride)
@@ -155,7 +158,7 @@ class GameScene {
     }
 
     
-    func updateCameraAspectRatio(size: CGSize, for entities: [Entity]) {
+    func updateCameraAspectRatio(size: CGSize) {
         let aspectRatio = Float(size.width / size.height)
         
         for entity in entities where entity.hasComponent(CameraComponent.self) {
@@ -170,4 +173,11 @@ class GameScene {
     }
 
     
+    func handleInteraction(at point: CGPoint){
+        
+    }
+    
+    func asyncInverse(){
+        
+    }
 }
