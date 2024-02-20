@@ -32,6 +32,7 @@ class GameEntity: Entity {
     var components: [String: Component] = [:]
 
     init(name: String, id: UUID = UUID()) {
+        entityID = ID()
         self.entityID.name = name
         self.entityID.identifier = id
     }

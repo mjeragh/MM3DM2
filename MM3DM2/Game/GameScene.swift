@@ -43,7 +43,7 @@ class GameScene {
     var uniforms = Uniforms()
     var cameraEntity : GameEntity?
     
-    let sunEntity, moonEntity, landEntity : GameEntity?
+    let sunEntity, moonEntity, landEntity : GameEntity
     var counter = 0.0
     var cameraSystem : CameraSystem?
     //Note: I dont to access the renderSystem since Im passing the gamescene to the draw methoed in the rendereSystem
@@ -53,15 +53,14 @@ class GameScene {
    
   init() {
       
-      landEntity = createModelEntity(name: "plane1000.usda", position: [0,0,0], rotation: float3(0,0,0), scale: 100, id: UUID())
-      moonEntity = createModelEntity(name: "pegShader.usda", position: [2,22,43], rotation: float3(0,0,0), scale: 1.5, id: UUID())
-      sunEntity = createModelEntity(name: "pegShader.usda", position: [0,20,0], rotation: float3(0,0,0), scale: 4.0, id: UUID())
+     landEntity = GameEntity(name: "land", id: UUID())
+        moonEntity = GameEntity(name: "Moon", id: UUID())
+      sunEntity = GameEntity(name: "Sun", id: UUID())
       
+      addModelToEntity(entity: landEntity, name: "plane1000.usda", position: [0,0,0], rotation: float3(0,0,0), scale: 100)
+      addModelToEntity(entity: sunEntity,name: "pegShader.usda", position: [2,22,43], rotation: float3(0,0,0), scale: 1.5)
+      addModelToEntity(entity: sunEntity, name: "pegShader.usda", position: [0,20,0], rotation: float3(0,0,0), scale: 4.0)
       
-      
-      sunEntity!.entityID.name = "Sun"
-      moonEntity!.entityID.name = "Moon"
-      landEntity!.entityID.name = "land"
 
       //chat set the sun as the light source
       //lighting.lights[0].position = [0,200,-100]
@@ -125,7 +124,7 @@ class GameScene {
     func update(deltaTime: Float) {
 //    let maxDistance: Float = 2
         let stride = 0.5 * deltaTime
-        moonEntity!.updateComponent(TransformComponent.self) { transform in
+        moonEntity.updateComponent(TransformComponent.self) { transform in
           transform.position = [30 * Float(cos(counter)), 22, -1.0 + 30 * Float(sin(counter))]
       }
       counter = counter + Double(stride)
@@ -147,14 +146,12 @@ class GameScene {
     
    
     //from #ChatGPT
-    func createModelEntity(name: String, position: float3, rotation: float3, scale: Float, id: UUID = UUID()) -> GameEntity {
-        let entity = GameEntity(name: name, id: id)
+    func addModelToEntity(entity: GameEntity, name: String, position: float3, rotation: float3, scale: Float) {
         let modelComponent = ModelComponent(name: name)
         let transformComponent = TransformComponent(position: position, rotation: rotation, scale: scale)
         entity.addComponent(modelComponent)
         entity.addComponent(transformComponent)
         entities.append(entity)
-        return entity
     }
 
     
