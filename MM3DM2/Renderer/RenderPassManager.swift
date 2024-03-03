@@ -15,15 +15,15 @@ class RenderPassManager {
     var forwardRenderPass: ForwardRenderPass
     var shadowRenderPass: ShadowRenderPass
 
-    private init() {
-        // Initialize render passes with a placeholder view; will be updated later
+    private init(view: MTKView) {
+        self.view = view
         forwardRenderPass = ForwardRenderPass(view: MTKView())
         shadowRenderPass = ShadowRenderPass(view: MTKView())
     }
 
     // Singleton initialization method
     static func initialize(with view: MTKView) {
-        shared = RenderPassManager()
+        shared = RenderPassManager(view: view)
         shared?.view = view // Set the view
         //shared?.forwardRenderPass.updateView(view: view) // Update render passes with the correct view
         //shared?.shadowRenderPass.updateView(view: view)
