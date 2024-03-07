@@ -81,15 +81,27 @@ struct ForwardRenderPass: RenderPass {
                                length: MemoryLayout<Params>.stride,
                                index: ParamsBuffer.index)
       
+      let renderableEntities = scene.entities.filter { entity in
+                 entity.hasComponent(ModelComponent.self) && entity.hasComponent(TransformComponent.self)
+             }
+
+      // For each renderable entity, set up draw calls
+      for entity in renderableEntities {
+          guard let modelComponent = entity.getComponent(ModelComponent.self),
+                let transformComponent = entity.getComponent(TransformComponent.self) else {
+              continue
+          }
       
-      for model in scene.models {
-      renderEncoder.pushDebugGroup(model.name)
-      model.render(
-        encoder: renderEncoder,
-        uniforms: uniforms,
-        params: params)
-      renderEncoder.popDebugGroup()
-    }
+      
+          // Update uniforms or any other necessary data based on transformComponent
+          var uniforms = Uniforms()
+          uniforms.modelMatrix = transformComponent.modelMatrix
+          uniforms.viewMatrix = scene.camera.viewMatrix // Assuming camera's viewMatrix is accessible
+          uniforms.projectionMatrix = scene.camera.projectionMatrix // Assuming camera's projectionMatrix is accessible
+          
+          // Render the entity using its modelComponent and updated uniforms
+          renderEntity(with: modelComponent, uniforms: uniforms, commandBuffer: commandBuffer, renderPassDescriptor: renderPassDescriptor)
+      }//for entity in renderableEntities
     /* Debugging sun position
     var scene = scene
     DebugModel.debugDrawModel(

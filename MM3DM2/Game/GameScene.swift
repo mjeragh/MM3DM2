@@ -35,7 +35,7 @@ import os.log
 
 class GameScene {
  
-    private var entities = [GameEntity]()
+    var entities = [GameEntity]()
     private var systems = [System]()
     var width : Float = 0.0
     var height : Float = 0.0
